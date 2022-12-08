@@ -5,12 +5,16 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [{
 	path: '',
-	component: HomeComponent,
-	title: 'Ecoleta | Home'
+	component: HomeComponent
+}, {
+	path: 'points',
+	loadChildren: () => import('./points/points.module').then(m => m.PointsModule)
 }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+}

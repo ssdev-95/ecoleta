@@ -1,0 +1,28 @@
+<div>
+	<header>
+		<img
+			src="../../../assets/go-back.svg"
+			alt="Green arrow vector"
+		/>
+	</header>
+
+	<main>
+		<div>
+			<strong>😉&nbsp;&nbsp;Wellcome</strong>
+
+			<span>Find in the map your collect point</span>
+		</div>
+
+		<img
+			src="https://i.ibb.co/XFyBHh1/map.png"
+			alt="A map example"
+		/>
+
+		<div *ngFor="let categ in categs">
+		  <button>
+				<img src="../../../assets//organincs.svg" alt="" />
+				<span>{{categ.text}}</span>
+			</button>
+		</div>
+	</main>
+</div>

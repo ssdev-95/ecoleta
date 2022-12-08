@@ -5,11 +5,10 @@ import { HomeComponent } from './home.component';
 
 
 @NgModule({
-  declarations: [
-    HomeComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [HomeComponent],
+  imports: [CommonModule],
+	bootstrap: [HomeComponent]
 })
-export class HomeModule { }
+export class HomeModule {
+	title = 'Home | Ecoleta'
+}
