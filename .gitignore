@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment variables
+src/environment/environment.ts
+
+src/eruda-dom.d.ts
+map.png

@@ -21,6 +21,13 @@ module.exports = {
 			fontFamily: {
 				butu: 'Ubuntu, sans-serif',
 			  sans:  'Roboto, sans-serif'
+			},
+			screens: {
+				mb: { 'max':'720px' },
+				md: { 'min':'720px' }
+			},
+			backgroundImage: {
+				people: 'url(src/assets/people.svg)'
 			}
 		},
   },
