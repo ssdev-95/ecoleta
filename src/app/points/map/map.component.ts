@@ -7,10 +7,19 @@ import { categs } from '../../app.component'
   styleUrls: []
 })
 export class MapComponent {
-	categs: {text:string}[] = []
+	categs: {text:string,src:string}[] = []
+	selectedCategs:string[] = []
+
+	selectCateg(categ:string) {
+		if(this.selectedCategs.includes(categ)) {
+			this.selectedCategs = this.selectedCategs.filter(item => item !== categ)
+			return
+		}
+
+		this.selectedCategs.push(categ)
+	}
 
 	ngOnInit() {
-		console.log('Mounted')
 		this.categs = categs
 	}
 }

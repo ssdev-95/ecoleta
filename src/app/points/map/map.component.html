@@ -1,26 +1,40 @@
-<div>
-	<header>
-		<img
-			src="../../../assets/go-back.svg"
-			alt="Green arrow vector"
-		/>
+<div class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem] pb-6">
+	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">
+		<a
+			class="flex-none"
+			[routerLink]="['/']"
+		>
+  		<img
+  			src="../../../assets/go-back.svg"
+  			alt="Green arrow vector"
+  		/>
+		</a>
 	</header>
 
-	<main>
-		<div>
-			<strong>😉&nbsp;&nbsp;Wellcome</strong>
+	<main class="flex-1 max-w-[1120px] flex flex-col gap-8">
+		<div class="grid grid-cols-1 text-zinc-800 gap-2">
+			<strong class="text-2xl">
+				😉&nbsp;&nbsp;Wellcome
+			</strong>
 
-			<span>Find in the map your collect point</span>
+			<span class="text-zinc-300">
+				Find in the map your collect point
+			</span>
 		</div>
 
 		<img
 			src="https://i.ibb.co/XFyBHh1/map.png"
+			class="h-[500px] max-w-full fit-contain brightness-[0.4]"
 			alt="A map example"
 		/>
 
-		<div *ngFor="let categ in categs">
-		  <button>
-				<img src="../../../assets//organincs.svg" alt="" />
+		<div class="w-full flex flex-wrap gap-2 justify-center">
+		  <button
+				*ngFor="let categ of categs"
+				(click)="selectCateg(categ.text)"
+				[class]="['flex-none', 'py-4', 'px-[26px]', 'rounded-lg', selectedCategs.includes(categ.text) && 'bg-white', !selectedCategs.includes(categ.text) && 'bg-green-200', selectedCategs.includes(categ.text) && 'ring-[2px]', selectedCategs.includes(categ.text) && 'ring-green-500']"
+			>
+				<img [src]="categ.src" alt="" />
 				<span>{{categ.text}}</span>
 			</button>
 		</div>
