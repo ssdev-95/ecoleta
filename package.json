@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "dev": "ng serve --live-reload",
     "start": "ng serve",
-    "build": "ng build",
+    "build:simple": "ng build",
+    "build": "node ./pre-build.mjs --production && ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
