@@ -6,7 +6,7 @@
     "dev": "ng serve --live-reload",
     "start": "ng serve",
 		"build": "ng build --configuration production",
-    "buizell": "node ./pre-build.mjs --production && ng build --configuration production",
+    "pre:build": "node pre-build.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

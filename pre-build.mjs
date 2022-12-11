@@ -7,9 +7,9 @@ function getIsProduction(args) {
 
 function getPath(isProduction) {
   if(isProduction) {
-		return'./src/environment/environment.prod.ts'
+		return'src/environment/environment.prod.ts'
 	} else {
-		return './src/environment/environment.dev.ts'
+		return 'src/environment/environment.dev.ts'
 	}
 }
 
