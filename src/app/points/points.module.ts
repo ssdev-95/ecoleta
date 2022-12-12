@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PointsRoutingModule } from './points-routing.module';
-import { MapComponent } from './map/map.component';
+import { PointsListComponent } from './list/list.component';
 import { NewPointComponent } from './new/new.component';
-
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
-		MapComponent,
-		NewPointComponent
+		PointsListComponent,
+		NewPointComponent,
+		MapComponent
 	],
   imports: [
     CommonModule,

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MapComponent } from './map/map.component';
+import { PointsListComponent } from './list/list.component';
 import { NewPointComponent } from './new/new.component';
 
 const routes: Routes = [{
 	path: '',
-	component: MapComponent
+	component: PointsListComponent
 }, {
 	path: 'new',
 	component: NewPointComponent

@@ -7,16 +7,13 @@ import { HomeModule } from './home/home.module';
 import { PointsModule } from './points/points.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
 		PointsModule,
 		HomeModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
