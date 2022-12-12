@@ -43,6 +43,9 @@ Thumbs.db
 
 # Environment variables
 src/environment/environment*.ts
+.env
+.env.local
 
 src/eruda-dom.d.ts
 map.png
+.vercel

@@ -1,12 +1,11 @@
 {
   "name": "ecoleta",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --live-reload",
     "start": "ng serve",
-		"build": "ng build --configuration production",
-    "pre:build": "node pre-build.mjs",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
