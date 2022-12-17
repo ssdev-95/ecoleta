@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { categs } from '../../app.component'
+import { ActivatedRoute } from '@angular/router';
+
+import { MapService } from '../map/map.service';
+import { categs } from '../../app.component';
 
 @Component({
   selector: 'points-list',
@@ -7,6 +10,10 @@ import { categs } from '../../app.component'
   styleUrls: []
 })
 export class PointsListComponent {
+	constructor(
+		private route: ActivatedRoute,
+		private mapService: MapService
+	) { }
 	categs: {text:string,src:string}[] = []
 	selectedCategs:string[] = []
 
@@ -21,5 +28,10 @@ export class PointsListComponent {
 
 	ngOnInit() {
 		this.categs = categs
+		//TODO: Use route city params to fetch points to mark in the map
+		this.route.queryParams.subscribe(params => {
+			console.log(params['city'])
+			this.mapService.bootstrap()
+		})
 	}
 }
