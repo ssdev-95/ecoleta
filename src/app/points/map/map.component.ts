@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import * as Leaf from 'leaflet';
+import { Component, Input } from '@angular/core';
+//import * as Leaf from 'leaflet';
 
-const baseMapTile = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-const defaultMapCenter:Leaf.LatLngExpression = [-3.000000, -59.000000]
+//import { MapService } from './map.service';
 
 @Component({
   selector: 'leaflet-map',
@@ -10,27 +9,13 @@ const defaultMapCenter:Leaf.LatLngExpression = [-3.000000, -59.000000]
   styleUrls: []
 })
 export class MapComponent {
-	map:Leaf.Map = {} as Leaf.Map
+	/*constructor(private mapService: MapService) {}
+	@Input() coords:Leaf.LatLngExpression = [0,0]
 
 	ngOnInit() {
-		if(navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition((loc) => {
-				const { latitude, longitude } = loc.coords
-				const mapCenter:Leaf.LatLngExpression = [latitude, longitude]
-
-				this.map = Leaf
-				  .map('leaflet', { trackResize: false })
-					.setView(mapCenter, 10)
-			})
-		} else {
-			this.map = Leaf
-			  .map('leaflet', { trackResize: false })
-				.setView(defaultMapCenter, 10)
-		}
-
-		Leaf.tileLayer(baseMapTile, {
-			maxZoom: 19,                                        
-			attribution: '<a href="https://openstreetmap.org/copyright">&copy; OpenStreetMap</a>'
-		}).addTo(this.map)
-	}
+		this.mapService.bootstrap({
+			coords: this.coords,
+			root: 'leaflet'
+		})
+	}*/
 }
