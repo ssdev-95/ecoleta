@@ -38,7 +38,7 @@ export class MapService {
 		}).addTo(this._map)
 	}
 
-	addMarker(coords:Leaflet.LatLngExpression) {
+	addMarker(coords:Leaflet.LatLngExpression=[0,0]) {
 		const marker = Leaflet.marker(coords).addTo(this._map)
 
 		this.addPopup({
