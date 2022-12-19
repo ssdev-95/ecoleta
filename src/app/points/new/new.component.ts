@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import  * as Leaflet from 'leaflet';
 
 import { categs } from '../../app.component';
 import { MapService } from '../map/map.service';
+import { FormService } from '../form.service';
 
 import {
 	HttpService,
@@ -17,7 +19,8 @@ import {
 export class NewPointComponent {
 	constructor(
 		private mapService: MapService,
-		private httpClient: HttpService
+		private httpClient: HttpService,
+		public form: FormService
 	) {}
 
 	markSubscription:Subscription = {} as Subscription

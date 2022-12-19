@@ -27,7 +27,10 @@
 			registration
 		</h1>
 	
-		<form class="w-full flex flex-col gap-6">
+		<form
+			class="w-full flex flex-col gap-6"
+			[formGroup]="form"
+		>
 			<label class="w-full h-[300px] bg-green-200 rounded-md p-7">
 				<div class="w-full h-full rounded-md border border-[4px] border-green-600 border-dashed grid place-items-center">
 					<img
@@ -38,6 +41,7 @@
 
 				<input
 					class="-translate-x-[100vw]"
+					name="picture"
 					type="file"
 				/>
 			</label>
@@ -49,17 +53,17 @@
 
 				<label class="w-full flex flex-col">
 					<span class="text-[0.875rem]">Entity's name</span>
-					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" />
+					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="name" />
 				</label>
 
 				<label class="w-full flex flex-col">
 					<span class="text-[0.875rem]">Email</span>
-					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" />
+					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="email" />
 				</label>
 
 				<label class="w-[45%] mb:w-[65%] flex flex-col">
 					<span class="text-[0.875rem]">Whatsapp</span>
-					<input class="bg-zinc-200 w-full mr-auto rounded-md px-4 py-3 text-[1rem]" />
+					<input class="bg-zinc-200 w-full mr-auto rounded-md px-4 py-3 text-[1rem]" name="whatsapp" />
 				</label>
 			</fieldset>
 
@@ -79,24 +83,24 @@
 				<div class="w-full flex gap-3">
 					<label class="w-[30%] flex flex-col">
 						<span class="text-[0.875rem]">Number</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="number" />
 					</label>
 
 					<label class="flex-1 flex flex-col">
 						<span class="text-[0.875rem]">City</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="city" />
 					</label>
 				</div>
 
 				<div class="w-full flex gap-3">
 					<label class="w-[30%] flex flex-col">
 						<span class="text-[0.875rem]">Street</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="street" />
 					</label>
 	
    				<label class="flex-1 flex flex-col">
   					<span class="text-[0.875rem]">State</span>
-  					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="state" />
    				</label>
 				</div>
 			</fieldset>
@@ -132,4 +136,4 @@
 			</button>
 		</form>
 	</main>
-</div>0
+</div>

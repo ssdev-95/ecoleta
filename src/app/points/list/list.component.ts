@@ -14,6 +14,7 @@ export class PointsListComponent {
 		private route: ActivatedRoute,
 		private mapService: MapService
 	) { }
+
 	categs: {text:string,src:string}[] = []
 	selectedCategs:string[] = []
 
