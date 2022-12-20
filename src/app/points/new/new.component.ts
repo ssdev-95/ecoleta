@@ -24,6 +24,10 @@ export class NewPointComponent {
 	) {}
 
 	markSubscription:Subscription = {} as Subscription
+	formSubscription:Subscription = this
+	  .form
+		.valueChanges
+		.subscribe()
 
 	coords:Leaflet.LatLngExpression = [0,0]
 	place:PlaceProperty = {} as PlaceProperty
@@ -85,5 +89,6 @@ export class NewPointComponent {
 
 	ngOnDestroy() {
 		this.httpClient.unsubscribe(this.markSubscription)
+		this.formSubscription.unsubscribe()
 	}
 }

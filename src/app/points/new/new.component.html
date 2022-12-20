@@ -30,18 +30,26 @@
 		<form
 			class="w-full flex flex-col gap-6"
 			[formGroup]="form"
+			(ngSubmit)="form.submit()"
 		>
 			<label class="w-full h-[300px] bg-green-200 rounded-md p-7">
-				<div class="w-full h-full rounded-md border border-[4px] border-green-600 border-dashed grid place-items-center">
+				<div class="w-full h-full rounded-md border border-[4px] border-green-600 border-dashed grid place-items-center overflow-hidden">
 					<img
+						*ngIf="!form.imagePreview"
 						src="../../../assets/upload.svg"
 						alt="Upload a image file"
+					/>
+
+					<img
+						*ngIf="form.imagePreview"
+						class="h-full"
+						[src]="form.imagePreview"
 					/>
 				</div>
 
 				<input
 					class="-translate-x-[100vw]"
-					name="picture"
+					(change)="form.onImageChange($event)"
 					type="file"
 				/>
 			</label>
@@ -53,17 +61,17 @@
 
 				<label class="w-full flex flex-col">
 					<span class="text-[0.875rem]">Entity's name</span>
-					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="name" />
+					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="name" />
 				</label>
 
 				<label class="w-full flex flex-col">
 					<span class="text-[0.875rem]">Email</span>
-					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="email" />
+					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="email" />
 				</label>
 
 				<label class="w-[45%] mb:w-[65%] flex flex-col">
 					<span class="text-[0.875rem]">Whatsapp</span>
-					<input class="bg-zinc-200 w-full mr-auto rounded-md px-4 py-3 text-[1rem]" name="whatsapp" />
+					<input class="bg-zinc-200 w-full mr-auto rounded-md px-4 py-3 text-[1rem]" formControlName="whatsapp" />
 				</label>
 			</fieldset>
 
@@ -83,24 +91,24 @@
 				<div class="w-full flex gap-3">
 					<label class="w-[30%] flex flex-col">
 						<span class="text-[0.875rem]">Number</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="number" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="number" />
 					</label>
 
 					<label class="flex-1 flex flex-col">
 						<span class="text-[0.875rem]">City</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="city" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="city" />
 					</label>
 				</div>
 
 				<div class="w-full flex gap-3">
 					<label class="w-[30%] flex flex-col">
 						<span class="text-[0.875rem]">Street</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="street" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="street" />
 					</label>
 	
    				<label class="flex-1 flex flex-col">
   					<span class="text-[0.875rem]">State</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" name="state" />
+						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="state" />
    				</label>
 				</div>
 			</fieldset>
@@ -129,7 +137,7 @@
 			</div>
 
 			<button
-				disabled
+				type="submit"
 				class="bg-green-400 rounded-md md:w-[267.08px] w-full overflow-hidden hover:bg-green-600 mb:text-[0.875rem] text-white text-center font-semibold p-4 ml-auto disabled:bg-green-500"
 			>
 				Register a collector point
