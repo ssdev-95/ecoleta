@@ -6,7 +6,7 @@ import {
 	environment
 } from '../../environment/environment';
 
-interface GetMarks {
+interface ReverseGeolocationProps {
 	lat:number,
 	long:number
 }
@@ -39,11 +39,13 @@ export class HttpService {
   constructor(
 		private client:HttpClient
 	) {
-		this.baseUrl = environment.API_URL
-		this.apiKey = environment.API_KEY
+		this.baseUrl = environment.GEO_API_URL
+		this.apiKey = environment.GEO_API_KEY
 	}
 
-	getMarks({ lat, long }:GetMarks) {
+	getReverseGeolocation(
+		{ lat, long }:ReverseGeolocationProps
+	) {
 		const url = `${this.baseUrl}?lat=${lat}&lon=${long}&apiKey=${this.apiKey}`
 		return this.client.get<PlaceResponse>(url)
 	}

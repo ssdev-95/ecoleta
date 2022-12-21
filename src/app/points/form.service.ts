@@ -11,10 +11,7 @@ import { Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class FormService extends FormGroup {
-	private readonly apiUrl = `https://api.imgbb.com/1/upload?key=${environment.IMGBB_KEY}`
-	private readonly options = { headers: {
-		'content-type': 'multipart/form-data'
-	}}
+	private readonly apiUrl = environment.ECOLET_API_URL
 	private _imagePreview:string = ''
 	private _imagePreviewSubscription: Subscription|undefined
 
@@ -53,13 +50,15 @@ export class FormService extends FormGroup {
 	}
 
 	uploadImage(image:File) {
-		const uploadData = new FormData()
-		uploadData.append('image', image)
-		//uploadData.append('key', environment.IMGBB_KEY)
-
+		const uploadData = {
+			name: image.name,
+			image: this.imagePreview,
+			type: image.type
+		}
+	
 		this
 		  .httpClient
-			.post(this.apiUrl, uploadData, this.options)
+			.post(this.apiUrl, uploadData)
 			.subscribe(console.log)
 	}
 

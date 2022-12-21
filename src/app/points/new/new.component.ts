@@ -61,7 +61,7 @@ export class NewPointComponent {
 
 			  this.markSubscription = this
 				  .httpClient
-					.getMarks({
+					.getReverseGeolocation({
 						lat: latitude,
 						long: longitude
 					}).subscribe(place => {
@@ -78,7 +78,7 @@ export class NewPointComponent {
 		} else {
 			this.mapService.bootstrap()
 			this.mapService.addMarker()
-			this.httpClient.getMarks({
+			this.httpClient.getReverseGeolocation({
 				lat: 0,
 				long: 0
 			})
