@@ -1,0 +1,41 @@
+<div class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem]">
+	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">
+		<a [routerLink]="['/points?city='+collector.city]">
+			<img src="../../../assets/go-back.svg" alt=""/>
+		</a>
+	</header>
+
+	<main class="w-full max-w-[1440px] flex-1 flex mb:flex-col gap-7">
+		<img
+		  class="mb:h-[35vh] mb:w-full w-1/2 object-cover"
+			[src]="collector.picture"
+			alt=""
+		/>
+
+		<div class="flex flex-col justify-start mt-7">
+			<h1 class="text-4xl text-blue-900 font-bold">{{collector.name}}</h1>
+
+			<strong class="text-3xl text-green-400 my-7">{{collector.categories}}</strong>
+
+			<strong class="text-sm text-blue-900 mb-3">Address</strong>
+
+			<span class="text-zinc-300 text-md" >{{collector.city}}, {{collector.uf}}</span>
+
+			<span class="text-zinc-300 text-md" >{{collector.street}}</span>
+
+			<span class="text-zinc-300 text-md" >N° {{collector.number}}</span>
+		</div>
+	</main>
+
+	<footer class="w-screen bg-white/40">
+		<div class="w-[500px] max-w-full flex justify-between px-10 py-8 mx-auto gap-6">
+			<a [href]="collector.whatsapp" class="px-4 py-3 rounded-md bg-green-400 text-white flex-1 flex items-center justify-center">
+			  Whatsapp
+			</a>
+
+			<a [href]="collector.email" class="px-4 py-3 rounded-md bg-green-400 text-white flex-1 flex items-center justify-center">
+				Email
+			</a>
+		</div>
+	</footer>
+</div>
