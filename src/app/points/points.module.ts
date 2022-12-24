@@ -10,11 +10,13 @@ import { MapComponent } from './map/map.component';
 import { MapService } from './map/map.service';
 import { HttpService } from './http.service';
 import { FormService } from './form.service';
+import { DetailedComponent } from './detailed/detailed.component';
 
 @NgModule({
   declarations: [
 		PointsListComponent,
 		NewPointComponent,
+		DetailedComponent,
 		MapComponent
 	],
   imports: [
