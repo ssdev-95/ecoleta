@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class FormService extends FormGroup {
-	private readonly apiUrl = environment.ECOLET_API_URL
+	private readonly apiUrl = environment.ECOLETA_API_URL
 	private _imagePreview:string = ''
 	private _imagePreviewSubscription: Subscription|undefined
 
@@ -58,7 +58,10 @@ export class FormService extends FormGroup {
 	
 		this
 		  .httpClient
-			.post(this.apiUrl, uploadData)
+			.post(
+				`${this.apiUrl}/image/upload`,
+				uploadData
+			)
 			.subscribe(console.log)
 	}
 
