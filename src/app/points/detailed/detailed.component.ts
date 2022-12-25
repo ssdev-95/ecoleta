@@ -9,8 +9,8 @@ export class DetailedComponent {
 	collector = {
 		name:'Ecoleta - Zumbi dos Palmares',
 		categories:'Eletronics, bulbs, batteries',
-		city:'Rio Grande do Sul',
-		uf:'Santa Catarina',
+		city:'Bunzaninho',
+		uf:'FFXII',
 		street:'G. Guemballa, Jardim America',
 		number:260,
 		whatsapp:'https://wa.me/+555555555555',

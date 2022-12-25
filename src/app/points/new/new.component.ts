@@ -3,14 +3,20 @@ import { Subscription } from 'rxjs';
 
 import  * as Leaflet from 'leaflet';
 
-import { categs } from '../../app.component';
-import { MapService } from '../map/map.service';
-import { FormService } from '../form.service';
+import { categs } from '@app/app.component';
+
+import {
+	MapService
+} from '@providers/map.service';
+
+import {
+	FormService
+} from '@providers/form.service';
 
 import {
 	HttpService,
 	PlaceProperty
-} from '../http.service';
+} from '@providers/http.service';
 
 @Component({
   selector: 'app-new-point',

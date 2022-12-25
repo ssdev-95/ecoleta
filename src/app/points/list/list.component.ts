@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { MapService } from '../map/map.service';
-import { categs } from '../../app.component';
+import { HttpService } from '@providers/http.service';
+import { MapService } from '@providers/map.service';
+import { categs } from '@app//app.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'points-list',
@@ -12,8 +14,11 @@ import { categs } from '../../app.component';
 export class PointsListComponent {
 	constructor(
 		private route: ActivatedRoute,
-		private mapService: MapService
+		private mapService: MapService,
+		private httpClient: HttpService
 	) { }
+
+	citiesSubscription:Subscription|undefined
 
 	categs: {text:string,src:string}[] = []
 	selectedCategs:string[] = []
@@ -31,8 +36,38 @@ export class PointsListComponent {
 		this.categs = categs
 		//TODO: Use route city params to fetch points to mark in the map
 		this.route.queryParams.subscribe(params => {
-			console.log(params['city'])
-			this.mapService.bootstrap()
+			const city = params['city']
+			this.citiesSubscription = this
+			  .httpClient
+				.getMarksByLocation({city})
+				.subscribe((marks:any) => {
+					this
+					  .mapService
+						.bootstrap(
+							marks[0]?.coords.split(',').map(Number)
+						)
+
+					marks.forEach((mark:any) => {
+						this.mapService.addMarker(
+							mark.coords.split(',').map(Number),
+							`<a
+							  class="text-zinc-300"
+								href="/points/${mark.id}"
+							>
+							  <strong class="text-blue-900">
+								  ${mark.name}
+								</strong>
+								<br/>${mark.coords}
+							</a>`
+						)
+					})
+				})
+	
+			//console.log(params['uf'])
 		})
+	}
+
+	ngOnDestroy() {
+		this.citiesSubscription?.unsubscribe()
 	}
 }

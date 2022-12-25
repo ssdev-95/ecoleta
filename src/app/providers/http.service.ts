@@ -6,6 +6,11 @@ import {
 	environment
 } from '../../environment/environment';
 
+interface Selectors {
+	city: string[]
+	uf: string[]
+}
+
 interface ReverseGeolocationProps {
 	lat:number,
 	long:number
@@ -35,12 +40,14 @@ interface PlaceResponse {
 export class HttpService {
 	private baseUrl:string = ''
 	private apiKey:string = ''
+	private backendUrl:string = ''
 
   constructor(
 		private client:HttpClient
 	) {
 		this.baseUrl = environment.GEO_API_URL
 		this.apiKey = environment.GEO_API_KEY
+		this.backendUrl = `${environment.ECOLETA_API_URL}/points`
 	}
 
 	getReverseGeolocation(
@@ -48,6 +55,14 @@ export class HttpService {
 	) {
 		const url = `${this.baseUrl}?lat=${lat}&lon=${long}&apiKey=${this.apiKey}`
 		return this.client.get<PlaceResponse>(url)
+	}
+
+	getCollectorLocationSelectors() {
+		return this.client.get<Selectors>(`${this.backendUrl}/get-selectors`)
+	}
+
+	getMarksByLocation({ city }:{city:string,uf?:string}){
+		return this.client.get(`${this.backendUrl}/list/${city}`)
 	}
 
 	unsubscribe(subscription:Subscription) {

@@ -14,13 +14,22 @@
 
 		<form
 			class="flex flex-col gap-3"
+			(submit)="handleSubmit($event)"
 		>
 		  <label class="w-[267.08px] bg-white rounded-md p-4">
   			<select
 	   			class="w-full bg-white/0 focus:outline-0 text-zinc-300 mb:text-[0.9365rem]"
+					[formControl]="cityControl"
 		  	>
 			    <option disabled selected>
 					  Select the city
+					</option>
+
+					<option
+						*ngFor="let city of selectors.city"
+						[value]="city"
+					>
+					  {{city}}
 					</option>
   			</select>
 			</label>
@@ -28,15 +37,23 @@
 			<label class="w-[267.08px] bg-white rounded-md p-4">
 				<select
   			  class="w-full bg-white/0 focus:outline-0 text-zinc-300 mb:text-[0.9365rem]"
+					[formControl]="ufControl"
   			>
   			  <option disabled selected>
 						Select the state
+					</option>
+
+					<option
+						*ngFor="let uf of selectors.uf"
+						[value]="uf"
+					>
+					  {{uf}}
 					</option>
   			</select>
 			</label>
 
 			<button
-				disabled
+				[disabled]="!selectors.uf.length || !selectors.city.length"
 				class="bg-green-400 w-[267.08px] flex rounded-md overflow-hidden disabled:bg-green-600"
 			>
 				<div class="bg-green-600 p-4">
