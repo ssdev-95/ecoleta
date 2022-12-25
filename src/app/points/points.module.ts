@@ -8,6 +8,7 @@ import { PointsListComponent } from './list/list.component';
 import { NewPointComponent } from './new/new.component';
 import { DetailedComponent } from './detailed/detailed.component';
 import { MapComponent } from './map/map.component';
+
 import { MapService } from '@providers/map.service';
 import { HttpService } from '@providers/http.service';
 import { FormService } from '@providers/form.service';

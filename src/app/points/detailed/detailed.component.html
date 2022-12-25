@@ -1,4 +1,7 @@
-<div class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem]">
+<div
+	*ngIf="!!collector"
+	class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem]"
+>
 	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">
 		<a
 			[routerLink]="['/points']"

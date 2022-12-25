@@ -39,7 +39,16 @@ export class MapService {
 	}
 
 	addMarker(coords:Leaflet.LatLngExpression=[0,0], popoupContent?:string) {
-		const marker = Leaflet.marker(coords).addTo(this._map)
+		const marker = Leaflet
+		  .marker(coords, { icon: new Leaflet.Icon({
+				iconUrl: '../../assets/map-pin.svg',
+				iconSize: [45,45],
+				iconAnchor: [22,45],
+				shadowUrl: '../../assets/map-pin-shadow.svg',
+				shadowSize: [45,45],
+				shadowAnchor: [10,40]
+			}) })
+			.addTo(this._map)
 
 		this.addPopup({
 			marker,

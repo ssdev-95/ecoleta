@@ -65,6 +65,10 @@ export class HttpService {
 		return this.client.get(`${this.backendUrl}/list/${city}`)
 	}
 
+	getDetailedCollectorById<T=any>(id:string) {
+		return this.client.get<T>(`${this.backendUrl}/${id}`)
+	}
+
 	unsubscribe(subscription:Subscription) {
 		subscription.unsubscribe()
 	}
