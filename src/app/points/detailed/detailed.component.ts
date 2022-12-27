@@ -6,8 +6,7 @@ import { HttpService } from '@providers/http.service';
 
 import {
 	mapHttpResponse
-} from 'src/helpers/mapHttpCollectorResponse';
-import {ResourcesConfig} from 'eruda';
+} from '@helpers/mapHttpCollectorResponse';
 
 interface Collector {
 	id:string

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import {
 	environment
-} from '../../environment/environment';
+} from '@environment/environment';
 
 interface Selectors {
 	city: string[]

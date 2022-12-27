@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
-
-/*import {
-	environment
-} from '../../environment/environment';*/ 
 import { Subscription } from 'rxjs';
+
+import { mapFormData } from '@helpers/mapFormToHttpRequest';
+
+import {
+	environment
+} from '@environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService extends FormGroup {
-	//private readonly apiUrl = environment.ECOLETA_API_URL
+	private readonly apiUrl = environment.ECOLETA_API_URL
 	private _imagePreview:string = ''
 	private _imagePreviewSubscription: Subscription|undefined
 	private _selectedCategs:string[] = []
@@ -68,21 +70,17 @@ export class FormService extends FormGroup {
 			throw Error('No file/image selected')
 		}
 
-		const { picture, ...rest } = this.getRawValue()
-
-		const formData = {
-			...rest,
-			picture: {
-				image: this._imagePreview,
-				name: picture.name,
-				type: picture.type
-			}
-		}
+		const formData = mapFormData({
+			...this.getRawValue(),
+			imagePreview: this._imagePreview,
+			categories: this._selectedCategs
+		})
 
 		console.log(formData)
 
 		this.reset()
 		this._imagePreview = ''
+		this._selectedCategs = []
 	}
 
 	get imagePreview():string {

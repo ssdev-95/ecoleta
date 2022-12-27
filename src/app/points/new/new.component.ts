@@ -60,6 +60,12 @@ export class NewPointComponent {
 						long: longitude
 					}).subscribe(place => {
 						this.place = place.features[0].properties
+						this.form.patchValue({
+							city: this.place.city,
+							state: this.place.county,
+							street: this.place.street,
+							number: this.place.housenumber
+						},{ emitEvent: true, onlySelf: true })
 					})
 
 				this.mapService?.map?.on('click', (event) => {
@@ -78,8 +84,6 @@ export class NewPointComponent {
 							lat: lat, long: lng
 						}).subscribe(place => {
 							this.place = place.features[0].properties
-							console.clear()
-							console.log(this.place)
 							this.form.patchValue({
 								city: this.place.city,
 								state: this.place.county,

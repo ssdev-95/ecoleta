@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { HttpService } from '@providers/http.service';
 import { MapService } from '@providers/map.service';
-import { categs } from '@app//app.component';
+import { categs } from '@app/app.component';
 import { Subscription } from 'rxjs';
 
 @Component({
