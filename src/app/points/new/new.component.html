@@ -126,8 +126,8 @@
 				<button
 					*ngFor="let categ of categs"
 					type="button"
-					(click)="selectCateg(categ.text)"
-					[class]="['flex', 'flex-col', 'md:gap-4', 'py-3', 'md:py-14', 'items-center', 'rounded-lg', selectedCategs.includes(categ.text) && 'bg-white', !selectedCategs.includes(categ.text) && 'bg-green-200', selectedCategs.includes(categ.text) && 'ring-[2px]', selectedCategs.includes(categ.text) && 'ring-green-500']"
+					(click)="form.selectCateg(categ.text)"
+					[class]="['flex', 'flex-col', 'md:gap-4', 'py-3', 'md:py-14', 'items-center', 'rounded-lg', form.selectedCategs.includes(categ.text) && 'bg-white', !form.selectedCategs.includes(categ.text) && 'bg-green-200', form.selectedCategs.includes(categ.text) && 'ring-[2px]', form.selectedCategs.includes(categ.text) && 'ring-green-500']"
 				>
 				  <img [src]="categ.src" alt="" />
 					<span class="md:text-xl">

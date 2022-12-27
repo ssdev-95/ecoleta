@@ -37,18 +37,7 @@ export class NewPointComponent {
 
 	coords:Leaflet.LatLngExpression = [0,0]
 	place:PlaceProperty = {} as PlaceProperty
-	categs: {text:string,src:string}[] = []                 
-	selectedCategs:string[] = []
-
-	selectCateg(categ:string) {                     
-		if(this.selectedCategs.includes(categ)) {           
-			this.selectedCategs = this.selectedCategs.filter(item => item !== categ)
-
-			return
-		}
-
-		this.selectedCategs.push(categ)
-	} 
+	categs:{ text: string; src: string; }[] = []
 
 	ngOnInit() {
 		this.categs = categs
@@ -61,7 +50,6 @@ export class NewPointComponent {
 					latitude,
 					longitude
 				]
-
 				this.mapService.bootstrap(coords)
 				this.mapService.addMarker(coords)
 
@@ -74,11 +62,31 @@ export class NewPointComponent {
 						this.place = place.features[0].properties
 					})
 
-				this.mapService.map?.on('click', (event) => {
+				this.mapService?.map?.on('click', (event) => {
+					this
+					  .httpClient
+						.unsubscribe(this.markSubscription)
+
 					const { lat, lng } = event.latlng
 					this.mapService.coords = [lat,lng]
 					this.mapService.removeMarker()
 					this.mapService.addMarker([lat,lng])
+
+					this.markSubscription = this
+					  .httpClient
+						.getReverseGeolocation({
+							lat: lat, long: lng
+						}).subscribe(place => {
+							this.place = place.features[0].properties
+							console.clear()
+							console.log(this.place)
+							this.form.patchValue({
+								city: this.place.city,
+								state: this.place.county,
+								street: this.place.street,
+								number: this.place.housenumber
+							},{ emitEvent: true, onlySelf: true })
+						})
 				})
 			})
 		} else {

@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import {
+/*import {
 	environment
-} from '../../environment/environment'; 
+} from '../../environment/environment';*/ 
 import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService extends FormGroup {
-	private readonly apiUrl = environment.ECOLETA_API_URL
+	//private readonly apiUrl = environment.ECOLETA_API_URL
 	private _imagePreview:string = ''
 	private _imagePreviewSubscription: Subscription|undefined
+	private _selectedCategs:string[] = []
 
   constructor(private httpClient: HttpClient) {
 		const formControl = {
@@ -29,6 +30,19 @@ export class FormService extends FormGroup {
 
 		super(formControl)
 		return this
+	}
+	
+	public get selectedCategs() {
+		return this._selectedCategs
+	}
+
+	selectCateg(categ:string) {
+		if(this._selectedCategs.includes(categ)) {
+			this._selectedCategs = this._selectedCategs.filter(item => item !== categ)
+			return
+		}
+
+		this._selectedCategs.push(categ)
 	}
 
 	onImageChange(event:Event) {
@@ -49,28 +63,24 @@ export class FormService extends FormGroup {
 		reader.readAsDataURL(file)
 	}
 
-	uploadImage(image:File) {
-		const uploadData = {
-			name: image.name,
-			image: this.imagePreview,
-			type: image.type
-		}
-	
-		this
-		  .httpClient
-			.post(
-				`${this.apiUrl}/image/upload`,
-				uploadData
-			)
-			.subscribe(console.log)
-	}
-
 	submit() {
 		if(!this.getRawValue().picture) {
 			throw Error('No file/image selected')
 		}
 
-		this.uploadImage(this.getRawValue().picture)
+		const { picture, ...rest } = this.getRawValue()
+
+		const formData = {
+			...rest,
+			picture: {
+				image: this._imagePreview,
+				name: picture.name,
+				type: picture.type
+			}
+		}
+
+		console.log(formData)
+
 		this.reset()
 		this._imagePreview = ''
 	}
