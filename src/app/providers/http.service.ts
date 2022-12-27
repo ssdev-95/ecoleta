@@ -23,7 +23,7 @@ export interface PlaceProperty {
 
 	// Do not send to backend
 	street:string
-	houseNumber:string
+	housenumber:string
 }
 
 interface Place {
