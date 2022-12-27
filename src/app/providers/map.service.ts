@@ -46,7 +46,8 @@ export class MapService {
 				iconAnchor: [22,45],
 				shadowUrl: '../../assets/map-pin-shadow.svg',
 				shadowSize: [45,45],
-				shadowAnchor: [10,40]
+				shadowAnchor: [10,40],
+				popupAnchor: [0, -40]
 			}) })
 			.addTo(this._map)
 
