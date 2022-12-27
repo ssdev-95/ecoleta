@@ -14,7 +14,7 @@ interface MapFormDataProps {
 type MappedFormData = Omit<MapFormDataProps,'picture'|'imagePreview'|'categories'|'number'|'whatsapp'|'state'> & {
 	uf: string
 	whatsapp: number
-	categories: string
+	categories: string[]
 	picture: {
 		name: string
 		image: string
@@ -26,18 +26,23 @@ export function mapFormData(
 	data:MapFormDataProps
 ):MappedFormData {
 	const {
-	  whatsapp, street, number, state, picture, imagePreview, categories,	...rest
+	  whatsapp,
+		street,
+		number,
+		picture,
+		state: uf,
+		imagePreview: image,
+		...rest
 	} = data
 
 	return {
 		...rest,
-		uf: state,
+		uf,
 		whatsapp: parseInt(whatsapp),
 		street: [street, number].join(', '),
-		categories: categories.join(','),
 		picture: {
+			image,
 			name: picture.name,
-			image: imagePreview,
 			type: picture.type
 		}
 	}
