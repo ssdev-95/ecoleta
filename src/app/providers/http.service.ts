@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import {
 	environment
 } from '@environment/environment';
+import {MappedFormData} from '@helpers/mapFormToHttpRequest';
 
 interface Selectors {
 	city: string[]
@@ -67,6 +68,11 @@ export class HttpService {
 
 	getDetailedCollectorById<T=any>(id:string) {
 		return this.client.get<T>(`${this.backendUrl}/${id}`)
+	}
+
+	registerNewCollectorPoint(data: MappedFormData) {
+		const endpoint = `${this.backendUrl}/new`
+		return this.client.post(endpoint, data)
 	}
 
 	unsubscribe(subscription:Subscription) {

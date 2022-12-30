@@ -9,9 +9,10 @@ interface MapFormDataProps {
 	picture: File
 	imagePreview: string
 	categories: string[]
+	coords: number[]
 }
 
-type MappedFormData = Omit<MapFormDataProps,'picture'|'imagePreview'|'categories'|'number'|'whatsapp'|'state'> & {
+export type MappedFormData = Omit<MapFormDataProps,'picture'|'imagePreview'|'categories'|'number'|'whatsapp'|'state'> & {
 	uf: string
 	whatsapp: number
 	categories: string[]

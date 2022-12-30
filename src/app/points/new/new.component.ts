@@ -30,14 +30,21 @@ export class NewPointComponent {
 	) {}
 
 	markSubscription:Subscription = {} as Subscription
+	registrationSubscription:Subscription|undefined
 	formSubscription:Subscription = this
 	  .form
 		.valueChanges
 		.subscribe()
 
-	coords:Leaflet.LatLngExpression = [0,0]
 	place:PlaceProperty = {} as PlaceProperty
 	categs:{ text: string; src: string; }[] = []
+
+	handleSubmit() {
+		this.registrationSubscription = this
+		  .form
+			.submit(this.mapService.coords as number[])
+			.subscribe()
+	}
 
 	ngOnInit() {
 		this.categs = categs
@@ -52,6 +59,7 @@ export class NewPointComponent {
 				]
 				this.mapService.bootstrap(coords)
 				this.mapService.addMarker(coords)
+				this.mapService.coords = coords
 
 			  this.markSubscription = this
 				  .httpClient
@@ -108,5 +116,6 @@ export class NewPointComponent {
 	ngOnDestroy() {
 		this.httpClient.unsubscribe(this.markSubscription)
 		this.formSubscription.unsubscribe()
+		this.registrationSubscription?.unsubscribe()
 	}
 }
