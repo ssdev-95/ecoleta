@@ -59,19 +59,32 @@
 					Infos
 				</legend>
 
-				<label class="w-full flex flex-col">
+				<label class="w-full flex flex-col relative">
 					<span class="text-[0.875rem]">Entity's name</span>
-					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="name" />
+					<input
+						class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
+						[class]="[(form.invalid && form.get('name')?.touched && form.get('name')?.errors?.['required']) && 'bg-red-500/40']"
+					  formControlName="name"
+					/>
 				</label>
 
 				<label class="w-full flex flex-col">
 					<span class="text-[0.875rem]">Email</span>
-					<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="email" />
+					<input
+						class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
+						[class]="[(form.invalid && form.get('email')?.touched && form.get('email')?.errors?.['required']) && 'bg-red-500/40']"
+						formControlName="email"
+					/>
 				</label>
 
 				<label class="w-[45%] mb:w-[65%] flex flex-col">
 					<span class="text-[0.875rem]">Whatsapp</span>
-					<input class="bg-zinc-200 w-full mr-auto rounded-md px-4 py-3 text-[1rem]" formControlName="whatsapp" inputmode="numeric" />
+					<input
+						class="bg-zinc-200 w-full mr-auto rounded-md px-4 py-3 text-[1rem]"
+						[class]="[(form.invalid && form.get('whatsapp')?.touched && form.get('whatsapp')?.errors?.['required']) && 'bg-red-500/40']"
+						formControlName="whatsapp"
+						inputmode="numeric"
+					/>
 				</label>
 			</fieldset>
 
@@ -91,24 +104,40 @@
 				<div class="w-full flex gap-3">
 					<label class="w-[30%] flex flex-col">
 						<span class="text-[0.875rem]">Number</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="number" />
+						<input
+							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
+							formControlName="number"
+							[class]="[(form.invalid && form.get('number')?.touched && form.get('number')?.errors?.['required']) && 'bg-red-500/40']"
+						/>
 					</label>
 
 					<label class="flex-1 flex flex-col">
 						<span class="text-[0.875rem]">City</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="city" />
+						<input
+							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
+							formControlName="city"
+							[class]="[(form.invalid && form.get('city')?.touched && form.get('city')?.errors?.['required']) && 'bg-red-500/40']"
+						/>
 					</label>
 				</div>
 
 				<div class="w-full flex gap-3">
 					<label class="w-[30%] flex flex-col">
 						<span class="text-[0.875rem]">Street</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="street" />
+						<input
+							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
+							formControlName="street"
+							[class]="[(form.invalid && form.get('street')?.touched && form.get('street')?.errors?.['required']) && 'bg-red-500/40']"
+						/>
 					</label>
 	
    				<label class="flex-1 flex flex-col">
   					<span class="text-[0.875rem]">State</span>
-						<input class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]" formControlName="state" />
+						<input
+							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
+							formControlName="state"
+							[class]="[(form.invalid && form.get('state')?.touched && form.get('state')?.errors?.['required']) && 'bg-red-500/40']"
+						/>
    				</label>
 				</div>
 			</fieldset>
@@ -138,7 +167,8 @@
 
 			<button
 				type="submit"
-				class="bg-green-400 rounded-md md:w-[267.08px] w-full overflow-hidden hover:bg-green-600 mb:text-[0.875rem] text-white text-center font-semibold p-4 ml-auto disabled:bg-green-500"
+				[disabled]="form.invalid || !form.hasCategorySelected().length"
+				class="bg-green-400 rounded-md md:w-[267.08px] w-full overflow-hidden hover:bg-green-600 mb:text-[0.875rem] text-white text-center font-semibold p-4 ml-auto disabled:bg-green-500 disabled:bg-green-700"
 			>
 				Register a collector point
 			</button>

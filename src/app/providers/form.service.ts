@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
+import {
+	FormControl, FormGroup, Validators
+} from '@angular/forms';
+
+import { Subscription } from 'rxjs';
 import { HttpService } from './http.service';
 import { mapFormData } from '@helpers/mapFormToHttpRequest';
 
@@ -15,14 +18,17 @@ export class FormService extends FormGroup {
 
   constructor(private httpClient: HttpService) {
 		const formControl = {
-			name: new FormControl(''),
-			email: new FormControl(''),
-			whatsapp: new FormControl(''),
-			street: new FormControl(''),
-			number: new FormControl(''),
-			city: new FormControl(''),
-			state: new FormControl(''),
-			picture: new FormControl()
+			name: new FormControl('', Validators.required),
+			email: new FormControl('', [
+				Validators.required,
+				Validators.email
+			]),
+			whatsapp: new FormControl('', Validators.required),
+			street: new FormControl('', Validators.required),
+			number: new FormControl('', Validators.required),
+			city: new FormControl('', Validators.required),
+			state: new FormControl('', Validators.required),
+			picture: new FormControl(undefined, Validators.required)
 		}
 
 		super(formControl)
@@ -65,23 +71,6 @@ export class FormService extends FormGroup {
 			throw Error('No file/image selected')
 		}
 
-		/*const formData = mapFormData({
-			...this.getRawValue(),
-			coords,
-			imagePreview: this._imagePreview,
-			categories: this._selectedCategs
-		})
-
-		this.reset()
-		this._imagePreview = ''
-		this._selectedCategs = []
-
-		return this
-		  .httpClient
-			.registerNewCollectorPoint(formData)*/
-
-		console.log(this.getRawValue().picture)
-
 		return this
 		  .httpClient
 			.uploadImage(this.getRawValue().picture)
@@ -112,5 +101,9 @@ export class FormService extends FormGroup {
 
 	get subscribe() {
 		return this._imagePreviewSubscription
+	}
+
+	hasCategorySelected() {
+		return this._selectedCategs
 	}
 }
