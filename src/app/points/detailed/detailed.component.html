@@ -1,0 +1,60 @@
+<div
+	*ngIf="!!collector"
+	class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem]"
+>
+	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">
+		<a
+			[routerLink]="['/points']"
+			[queryParams]="{city:collector.city,uf:collector.uf}"
+			queryParamsHandling="merge"
+		>
+			<img src="../../../assets/go-back.svg" alt=""/>
+		</a>
+	</header>
+
+	<main class="w-full max-w-[1440px] flex-1 flex mb:flex-col gap-7">
+		<img
+		  class="mb:h-[35vh] max-h-full mb:w-full w-1/2 object-cover"
+			[src]="collector.picture"
+			alt=""
+		/>
+
+		<div class="mb:flex-1 flex flex-col justify-start mt-7">
+			<h1 class="text-4xl text-blue-900 font-bold">{{collector.name}}</h1>
+
+			<strong class="text-3xl text-green-400 my-7">{{collector.categories}}</strong>
+
+			<strong class="text-sm text-blue-900 mb-3">Address</strong>
+
+			<span class="text-zinc-300 text-md" >{{collector.city}}, {{collector.uf}}</span>
+
+			<span class="text-zinc-300 text-md" >{{collector.street}}</span>
+
+			<span class="text-zinc-300 text-md" >N° {{collector.number}}</span>
+
+			<footer class="w-full h-fit mt-[auto_!important]">
+				<div class="w-[500px] max-w-full flex justify-between px-6 pb-8 mx-auto gap-4">
+					<a
+						class="p-3 rounded-md bg-green-400 text-white max-w-4 flex items-center justify-center"
+						[href]="collector.mapUrl"
+						target="_blank"
+					>
+					  <img
+							class="h-6"
+							src="../../../assets/compass.svg"
+							alt="A white compass icon"
+						/>
+					</a>
+
+					<a [href]="collector.whatsapp" class="px-4 py-3 rounded-md bg-green-400 text-white flex-1 flex items-center justify-center">
+						Whatsapp
+					</a>
+
+					<a [href]="collector.email" class="px-4 py-3 rounded-md bg-green-400 text-white flex-1 flex items-center justify-center">
+						Email
+					</a>
+				</div>
+			</footer>
+		</div>
+	</main>
+</div>
