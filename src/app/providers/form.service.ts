@@ -102,6 +102,7 @@ export class FormService extends FormGroup {
 				this
 				 .httpClient
 				 .registerNewCollectorPoint(formData)
+				 .subscribe(console.log)
 			})
 	}
 
