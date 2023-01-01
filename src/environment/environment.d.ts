@@ -5,4 +5,5 @@ export interface Environment {
 	GEO_API_URL: string
 	GEO_API_KEY: string
 	ECOLETA_API_URL: string
+	IMGBB_KEY?: string
 }

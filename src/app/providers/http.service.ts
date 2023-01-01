@@ -35,6 +35,12 @@ interface PlaceResponse {
 	features: Place[]
 }
 
+interface ImageUploadResponse {
+	data: {
+		display_url: string
+	}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -73,6 +79,16 @@ export class HttpService {
 	registerNewCollectorPoint(data: MappedFormData) {
 		const endpoint = `${this.backendUrl}/new`
 		return this.client.post(endpoint, data)
+	}
+
+	uploadImage(image:File|Blob) {
+		const uri = `https://api.imgbb.com/1/upload?key=${environment.IMGBB_KEY}`
+		const formData = new FormData()
+		formData.append('image', image)
+
+		return this
+		  .client
+			.post<ImageUploadResponse>(uri, formData)
 	}
 
 	unsubscribe(subscription:Subscription) {

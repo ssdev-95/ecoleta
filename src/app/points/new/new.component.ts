@@ -43,7 +43,7 @@ export class NewPointComponent {
 		this.registrationSubscription = this
 		  .form
 			.submit(this.mapService.coords as number[])
-			.subscribe()
+			//.subscribe()
 	}
 
 	ngOnInit() {

@@ -65,7 +65,7 @@ export class FormService extends FormGroup {
 			throw Error('No file/image selected')
 		}
 
-		const formData = mapFormData({
+		/*const formData = mapFormData({
 			...this.getRawValue(),
 			coords,
 			imagePreview: this._imagePreview,
@@ -78,7 +78,31 @@ export class FormService extends FormGroup {
 
 		return this
 		  .httpClient
-			.registerNewCollectorPoint(formData)
+			.registerNewCollectorPoint(formData)*/
+
+		console.log(this.getRawValue().picture)
+
+		return this
+		  .httpClient
+			.uploadImage(this.getRawValue().picture)
+			.subscribe((res) => {
+				const { display_url } = res.data
+
+				const formData = mapFormData({
+					...this.getRawValue(),
+					coords,
+					imagePreview: display_url,
+					categories: this._selectedCategs
+				})
+
+				this.reset()
+				this._imagePreview = ''
+				this._selectedCategs = []
+
+				this
+				 .httpClient
+				 .registerNewCollectorPoint(formData)
+			})
 	}
 
 	get imagePreview():string {
