@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Subscription } from 'rxjs';
 
 import {
 	environment
 } from '@environment/environment';
-import {MappedFormData} from '@helpers/mapFormToHttpRequest';
+
+import {
+	MappedFormData
+} from '@helpers/mapFormToHttpRequest';
 
 interface Selectors {
 	city: string[]
@@ -65,7 +69,9 @@ export class HttpService {
 	}
 
 	getCollectorLocationSelectors() {
-		return this.client.get<Selectors>(`${this.backendUrl}/get-selectors`)
+		return this
+		  .client
+			.get<Selectors>(`${this.backendUrl}/get-selectors`)
 	}
 
 	getMarksByLocation({ city }:{city:string,uf?:string}){
