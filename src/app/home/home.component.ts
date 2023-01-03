@@ -23,8 +23,15 @@ export class HomeComponent {
 	selectorsSubscription:Subscription|undefined
 
 	selectors:Selectors = { uf:[], city:[] }
-	cityControl = new FormControl('')
-	ufControl = new FormControl('')
+
+	cityControl = new FormControl({
+		value: '',
+		disabled: !this.selectors.city.length
+	})
+	ufControl = new FormControl({
+		value: '',
+		disabled: !this.selectors.uf.length
+	})
 
 	handleSubmit(ev: Event) {
 		ev?.preventDefault()
@@ -33,11 +40,19 @@ export class HomeComponent {
 	}
 
 	ngOnInit() {
-		this.selectorsSubscription = this
-		  .httpClient
+  	this.selectorsSubscription = this
+			.httpClient
 			.getCollectorLocationSelectors()
 			.subscribe(res => {
 				this.selectors = res
+				this.cityControl.enable({
+					onlySelf:!!res.city.length,
+					emitEvent:!!res.city.length
+				})
+				this.ufControl.enable({
+					onlySelf:!!res.uf.length,
+					emitEvent:!!res.uf.length
+				})
 			})
 	}
 
