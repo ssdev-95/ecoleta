@@ -21,7 +21,7 @@ export class HomeComponent {
 		private router: Router
 	) {}
 	selectorsSubscription:Subscription|undefined
-
+	loading:boolean = true
 	selectors:Selectors = { uf:[], city:[] }
 
 	cityControl = new FormControl({
@@ -53,6 +53,10 @@ export class HomeComponent {
 					onlySelf:!!res.uf.length,
 					emitEvent:!!res.uf.length
 				})
+
+  			setTimeout(() => {
+  				this.loading = false
+  			}, 2500)
 			})
 	}
 
