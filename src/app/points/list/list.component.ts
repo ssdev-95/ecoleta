@@ -34,7 +34,6 @@ export class PointsListComponent {
 
 	ngOnInit() {
 		this.categs = categs
-		//TODO: Use route city params to fetch points to mark in the map
 		this.route.queryParams.subscribe(params => {
 			const city = params['city']
 			this.citiesSubscription = this
@@ -62,8 +61,6 @@ export class PointsListComponent {
 						)
 					})
 				})
-	
-			//console.log(params['uf'])
 		})
 	}
 
