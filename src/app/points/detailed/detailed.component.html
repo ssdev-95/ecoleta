@@ -1,5 +1,14 @@
 <div
-	*ngIf="!!collector"
+	*ngIf="loading && !collector"
+	class="w-screen min-h-screen flex items-center justify-center"
+>
+	<div class="h-10 w-10 rounded-full overflow-hidden bg-spinner p-1 animate-spin">
+		<div class="h-full w-full rounded-full bg-zinc-200"></div>
+	</div>
+</div>
+
+<div
+	*ngIf="!!collector && !loading"
 	class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem]"
 >
 	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">

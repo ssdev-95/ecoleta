@@ -53,11 +53,11 @@ export class HomeComponent {
 					onlySelf:!!res.uf.length,
 					emitEvent:!!res.uf.length
 				})
-
-  			setTimeout(() => {
-  				this.loading = false
-  			}, 2500)
 			})
+
+  		setTimeout(() => {
+  			this.loading = false
+  		}, 2500)
 	}
 
 	ngOnDestroy() {
