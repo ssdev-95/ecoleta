@@ -29,6 +29,7 @@ export class NewPointComponent {
 		public form: FormService
 	) {}
 
+	isSubmiting:boolean = false
 	markSubscription:Subscription = {} as Subscription
 	registrationSubscription:Subscription|undefined
 	formSubscription:Subscription = this
@@ -40,10 +41,15 @@ export class NewPointComponent {
 	categs:{ text: string; src: string; }[] = []
 
 	handleSubmit() {
+		this.isSubmiting = true
 		this.registrationSubscription = this
 		  .form
 			.submit(this.mapService.coords as number[])
-			//.subscribe()
+
+		setTimeout(() => {
+			this.isSubmiting = false
+  		this.form.resetForm()
+		}, 3500)
 	}
 
 	ngOnInit() {
@@ -109,8 +115,6 @@ export class NewPointComponent {
 				long: 0
 			})
 		}
-
-		//TODO: Connect to the API and save new point from form
 	}
 
 	ngOnDestroy() {

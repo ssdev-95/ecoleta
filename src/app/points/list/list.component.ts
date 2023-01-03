@@ -22,6 +22,7 @@ export class PointsListComponent {
 
 	categs: {text:string,src:string}[] = []
 	selectedCategs:string[] = []
+	loading:boolean = true
 
 	selectCateg(categ:string) {
 		if(this.selectedCategs.includes(categ)) {
@@ -40,26 +41,32 @@ export class PointsListComponent {
 			  .httpClient
 				.getMarksByLocation({city})
 				.subscribe((marks:any) => {
-					this
-					  .mapService
-						.bootstrap(
-							marks[0]?.coords.split(',').map(Number)
-						)
+					setTimeout(() => {
+  					this.loading = false
+					}, 2500)
 
-					marks.forEach((mark:any) => {
-						this.mapService.addMarker(
-							mark.coords.split(',').map(Number),
-							`<a
-							  class="text-zinc-300"
-								href="/points/${mark.id}"
-							>
-							  <strong class="text-blue-900">
-								  ${mark.name}
-								</strong>
-								<br/>${mark.coords}
-							</a>`
-						)
-					})
+					setTimeout(() => {
+  					this
+  					  .mapService
+  						.bootstrap(
+  							marks[0]?.coords.split(',').map(Number)
+  						)
+
+  					marks.forEach((mark:any) => {
+  						this.mapService.addMarker(
+  							mark.coords.split(',').map(Number),
+  							`<a
+  							  class="text-zinc-300"
+  								href="/points/${mark.id}"
+  							>
+  							  <strong class="text-blue-900">
+  								  ${mark.name}
+  								</strong>
+  								<br/>${mark.coords}
+  							</a>`
+  						)
+  					})
+					}, 3000)
 				})
 		})
 	}

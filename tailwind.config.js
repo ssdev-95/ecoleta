@@ -28,7 +28,8 @@ module.exports = {
 			},
 			backgroundImage: {
 				people: 'url(src/assets/people.svg)',
-				spinner: 'linear-gradient(45deg, #322153, transparent 90%)'
+				spinner: 'linear-gradient(45deg, #322153, transparent 90%)',
+				'spinner-alt': 'linear-gradient(45deg, #e1faec, transparent 90%)'
 			}
 		},
   },

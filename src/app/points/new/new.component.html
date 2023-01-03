@@ -167,10 +167,21 @@
 
 			<button
 				type="submit"
-				[disabled]="form.invalid || !form.hasCategorySelected().length"
+				[disabled]="form.invalid || !form.hasCategorySelected().length || isSubmiting"
 				class="bg-green-400 rounded-md md:w-[267.08px] w-full overflow-hidden hover:bg-green-600 mb:text-[0.875rem] text-white text-center font-semibold p-4 ml-auto disabled:bg-green-500 disabled:bg-green-700"
 			>
-				Register a collector point
+			  <span *ngIf="!isSubmiting">
+					Register a collector point
+				</span>
+
+				<div
+					*ngIf="isSubmiting"
+					class="w-full min-h-full flex items-center justify-center"
+				>
+				  <div class="h-6 w-6 rounded-full overflow-hidden bg-spinner-alt p-1 animate-spin">
+						<div class="h-full w-full rounded-full bg-green-700"></div>
+					</div>
+				</div>
 			</button>
 		</form>
 	</main>
