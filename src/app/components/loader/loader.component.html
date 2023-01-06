@@ -1,5 +1,29 @@
-<div class="w-screen min-h-screen flex items-center justify-center">
-	<div class="h-10 w-10 rounded-full overflow-hidden bg-spinner p-1 animate-spin">
-		<div class="h-full w-full rounded-full bg-zinc-200"></div>
+<div
+	class="flex items-center justify-center"
+	[class]="{
+		'min-h-screen': !small,
+		'w-screen': !small,
+		'w-full': small,
+		'min-h-full': small
+	}"
+>
+	<div
+		class="rounded-full overflow-hidden p-1 animate-spin"
+		[class]="{
+		  'h-10': !small,
+			'w-10': !small,
+			'bg-spinner': !small,
+			'h-6': small,
+			'w-6': small,
+			'bg-spinner-alt': small
+		}"
+	>
+		<div
+			class="h-full w-full rounded-full"
+			[class]="{
+				'bg-zinc-200': !small,
+				'bg-green-700': small
+			}"
+		></div>
 	</div>
 </div>
