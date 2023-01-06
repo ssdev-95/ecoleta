@@ -1,14 +1,7 @@
-<div
-	*ngIf="loading"
-	class="w-screen min-h-screen flex items-center justify-center"
->
-  <div class="h-10 w-10 rounded-full overflow-hidden bg-spinner p-1 animate-spin">
-		<div class="h-full w-full rounded-full bg-zinc-200"></div>
-	</div>
-</div>
+<ec-loader *ngIf="loading; else content"></ec-loader>
 
+<ng-template #content>
 <div
-	*ngIf="!loading"
 	class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem] pb-6"
 >
 	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">
@@ -48,3 +41,4 @@
 		</div>
 	</main>
 </div>
+</ng-template>

@@ -1,11 +1,7 @@
-<div *ngIf="loading" class="w-screen min-h-screen flex items-center justify-center">
-	<div class="h-10 w-10 rounded-full overflow-hidden bg-spinner p-1 animate-spin">
-		<div class="h-full w-full rounded-full bg-zinc-200"></div>
-	</div>
-</div>
+<ec-loader *ngIf="loading; else content"></ec-loader>
 
+<ng-template #content>
 <div
-	*ngIf="!loading"
 	class="flex flex-col min-h-screen w-screen md:bg-people md:bg-right md:bg-contain md:bg-no-repeat"
 >
 	<header class="flex items-center justify-start p-4">
@@ -110,3 +106,4 @@
 		</form>
 	</main>
 </div>
+</ng-template>
