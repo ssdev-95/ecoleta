@@ -40,7 +40,18 @@ export class HomeComponent {
 	}
 
 	ngOnInit() {
-  	this.selectorsSubscription = this
+		const locationAuthorization = localStorage
+		  .getItem('ecoleta@location-consentiment')
+	  if(!Boolean(Number(locationAuthorization))) {
+			const authorization = window.confirm('Can we use yoyr current location to improve our services?')
+	
+			localStorage.setItem(
+				'ecoleta@location-consentiment',
+				Number(authorization).toString()
+			)
+		}
+  	
+		this.selectorsSubscription = this
 			.httpClient
 			.getCollectorLocationSelectors()
 			.subscribe(res => {

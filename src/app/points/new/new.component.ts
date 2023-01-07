@@ -54,8 +54,10 @@ export class NewPointComponent {
 
 	ngOnInit() {
 		this.categs = categs
+		const locationAuthorization = localStorage
+		  .getItem('ecoleta@location-consentiment')
 
-		if(navigator.geolocation) {
+		if(Boolean(Number(locationAuthorization))) {
 			navigator.geolocation.getCurrentPosition((loc) => {
 				const { latitude, longitude } = loc.coords
 
