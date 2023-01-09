@@ -60,6 +60,7 @@ export class DynamicTemplateDirective implements AfterViewChecked {
 			.nativeElement
 			.previousElementSibling
 
+		sibling.innerHTML = ''
 		sibling.appendChild(r)
 	}
 }
