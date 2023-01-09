@@ -5,9 +5,32 @@ import {
 	LoaderComponent
 } from './loader/loader.component';
 
+import {
+	HeadingComponent
+} from './heading/heading.component';
+
+import { TextComponent } from './text/text.component';
+
+import {
+	DynamicTemplateDirective
+} from '@directives/dynamic-template.directive';
+import { InputComponent } from './input/input.component';
+
 @NgModule({
-  declarations: [LoaderComponent],
+  declarations: [
+		DynamicTemplateDirective,
+		LoaderComponent,
+		HeadingComponent,
+		TextComponent,
+		InputComponent
+	],
   imports: [CommonModule],
-	exports: [LoaderComponent]
+	exports: [
+		DynamicTemplateDirective,
+		LoaderComponent,
+		HeadingComponent,
+		TextComponent,
+		InputComponent
+	]
 })
 export class ComponentsModule { }

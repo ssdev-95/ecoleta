@@ -9,13 +9,16 @@
 	</header>
 
 	<main class="mx-auto w-full max-w-[1104px] flex-1 flex flex-col justify-center mb:items-center items-start gap-6 p-10">
-		<h1 class="text-[3.325rem] mb:text-[1.9rem] font-bold font-butu mb:text-center">
+		<ec-heading class="text-[3.325rem] mb:text-[1.9rem] font-bold font-butu mb:text-center text-blue-900">
 			Your residuals collector marketplace
-		</h1>
+		</ec-heading>
 	
-		<p class="text-[1.5rem] mb:text-[0.9365rem] text-zinc-400 mb:text-center">
-		  We help people efficiently find residuals collector points.
-		</p>
+		<ec-text
+			*as="'p'"
+			class="text-[1.5rem] mb:text-[0.9365rem] text-zinc-400 mb:text-center"
+		>
+			We help people efficiently find residuals collector points.
+		</ec-text>
 
 		<form
 			class="flex flex-col gap-3"
@@ -80,9 +83,9 @@
 		  		/>
 				</div>
 				<div class="p-4 flex-1">
-  				<span class="mb:text-[0.875rem] text-white text-center font-semibold">
+  				<ec-text class="mb:text-[0.875rem] text-white text-center font-semibold">
   					Enter
-  				</span>
+  				</ec-text>
 				</div>
 			</button>
 
@@ -98,9 +101,9 @@
   			</div>
 	
   			<div class="p-4">
-  				<span class="mb:text-[0.875rem] text-white text-center font-semibold">
+  				<ec-text class="mb:text-[0.875rem] text-white text-center font-semibold">
   					Register a collector point
-  				</span>
+  				</ec-text>
   			</div>
   		</a>
 		</form>

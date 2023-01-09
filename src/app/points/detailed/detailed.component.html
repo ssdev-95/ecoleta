@@ -23,17 +23,17 @@
 		/>
 
 		<div class="mb:flex-1 flex flex-col justify-start mt-7">
-			<h1 class="text-4xl text-blue-900 font-bold">{{collector.name}}</h1>
+			<ec-heading class="text-4xl text-blue-900 font-bold">{{collector.name}}</ec-heading>
 
-			<strong class="text-3xl text-green-400 my-7">{{collector.categories}}</strong>
+			<ec-text *as="'strong'" class="text-3xl text-green-400 my-7">{{collector.categories}}</ec-text>
 
-			<strong class="text-sm text-blue-900 mb-3">Address</strong>
+			<ec-text *as="'strong'" class="text-sm text-blue-900 mb-3">Address</ec-text>
 
-			<span class="text-zinc-300 text-md" >{{collector.city}}, {{collector.uf}}</span>
+			<ec-text class="text-zinc-300 text-md" >{{collector.city}}, {{collector.uf}}</ec-text>
 
-			<span class="text-zinc-300 text-md" >{{collector.street}}</span>
+			<ec-text class="text-zinc-300 text-md" >{{collector.street}}</ec-text>
 
-			<span class="text-zinc-300 text-md" >N° {{collector.number}}</span>
+			<ec-text class="text-zinc-300 text-md" >N° {{collector.number}}</ec-text>
 
 			<footer class="w-full h-fit mt-[auto_!important]">
 				<div class="w-[500px] max-w-full flex justify-between px-6 pb-8 mx-auto gap-4">

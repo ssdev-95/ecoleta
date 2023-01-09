@@ -18,13 +18,13 @@
 
 	<main class="flex-1 max-w-[1120px] flex flex-col gap-8">
 		<div class="grid grid-cols-1 text-zinc-800 gap-2">
-			<strong class="text-2xl">
+			<ec-text *as="'strong'" class="text-2xl">
 				😉&nbsp;&nbsp;Wellcome
-			</strong>
+			</ec-text>
 
-			<span class="text-zinc-300">
+			<ec-text class="text-zinc-300">
 				Find in the map your collect point
-			</span>
+			</ec-text>
 		</div>
 
 		<leaflet-map></leaflet-map>
@@ -36,7 +36,7 @@
 				[class]="['flex-none', 'py-4', 'px-[26px]', 'rounded-lg', selectedCategs.includes(categ.text) && 'bg-white', !selectedCategs.includes(categ.text) && 'bg-green-200', selectedCategs.includes(categ.text) && 'ring-[2px]', selectedCategs.includes(categ.text) && 'ring-green-500']"
 			>
 				<img [src]="categ.src" alt="" />
-				<span>{{categ.text}}</span>
+				<ec-text>{{categ.text}}</ec-text>
 			</button>
 		</div>
 	</main>
