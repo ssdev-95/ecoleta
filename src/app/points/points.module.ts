@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PointsRoutingModule } from './points-routing.module';
+import { ComponentsModule } from '@app/components/components.module';
 import { PointsListComponent } from './list/list.component';
 import { NewPointComponent } from './new/new.component';
 import { DetailedComponent } from './detailed/detailed.component';
@@ -24,6 +25,7 @@ import { FormService } from '@providers/form.service';
     CommonModule,
 		HttpClientModule,
 		ReactiveFormsModule,
+		ComponentsModule,
     PointsRoutingModule
   ],
 	providers: [

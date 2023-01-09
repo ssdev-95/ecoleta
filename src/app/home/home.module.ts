@@ -10,6 +10,10 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 
 import {
+	ComponentsModule
+} from '@app/components/components.module';
+
+import {
 	HttpService
 } from '@providers/http.service';
 
@@ -17,6 +21,7 @@ import {
   declarations: [HomeComponent],
   imports: [
 		CommonModule,
+		ComponentsModule,
 		RouterModule,
 		ReactiveFormsModule,
 		HttpClientModule

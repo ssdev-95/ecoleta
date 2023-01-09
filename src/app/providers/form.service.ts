@@ -84,10 +84,6 @@ export class FormService extends FormGroup {
 					categories: this._selectedCategs
 				})
 
-				this.reset()
-				this._imagePreview = ''
-				this._selectedCategs = []
-
 				this
 				 .httpClient
 				 .registerNewCollectorPoint(formData)
@@ -101,6 +97,12 @@ export class FormService extends FormGroup {
 
 	get subscribe() {
 		return this._imagePreviewSubscription
+	}
+
+	resetForm() {
+		this.reset()
+		this._imagePreview = ''
+		this._selectedCategs = []
 	}
 
 	hasCategorySelected() {

@@ -1,4 +1,9 @@
-<div class="flex flex-col min-h-screen w-screen md:bg-people md:bg-right md:bg-contain md:bg-no-repeat">
+<ec-loader *ngIf="loading; else content"></ec-loader>
+
+<ng-template #content>
+<div
+	class="flex flex-col min-h-screen w-screen md:bg-people md:bg-right md:bg-contain md:bg-no-repeat"
+>
 	<header class="flex items-center justify-start p-4">
 		<img src="../../assets/logo.svg" alt="Ecoleta" />
 	</header>
@@ -16,12 +21,18 @@
 			class="flex flex-col gap-3"
 			(submit)="handleSubmit($event)"
 		>
-		  <label class="w-[267.08px] bg-white rounded-md p-4">
+		  <label
+				class="w-[267.08px] rounded-md p-4"
+				[class]="{
+				  'bg-zinc-300/50': !selectors.city.length,
+					'bg-white': !!selectors.city.length
+				}"
+			>
   			<select
 	   			class="w-full bg-white/0 focus:outline-0 text-zinc-300 mb:text-[0.9365rem]"
 					[formControl]="cityControl"
 		  	>
-			    <option disabled selected>
+			    <option disabled selected value="">
 					  Select the city
 					</option>
 
@@ -34,12 +45,18 @@
   			</select>
 			</label>
 
-			<label class="w-[267.08px] bg-white rounded-md p-4">
+			<label
+				class="w-[267.08px] bg-white rounded-md p-4"
+				[class]="{
+				  'bg-zinc-300/50': !selectors.uf.length,
+					'bg-white': !!selectors.uf.length
+				}"
+			>
 				<select
   			  class="w-full bg-white/0 focus:outline-0 text-zinc-300 mb:text-[0.9365rem]"
 					[formControl]="ufControl"
   			>
-  			  <option disabled selected>
+  			  <option disabled selected value="">
 						Select the state
 					</option>
 
@@ -53,7 +70,7 @@
 			</label>
 
 			<button
-				[disabled]="!selectors.uf.length || !selectors.city.length"
+				[disabled]="(!selectors.uf.length || !selectors.city.length) || (!ufControl.value || !cityControl.value)"
 				class="bg-green-400 w-[267.08px] flex rounded-md overflow-hidden disabled:bg-green-600"
 			>
 				<div class="bg-green-600 p-4">
@@ -89,3 +106,4 @@
 		</form>
 	</main>
 </div>
+</ng-template>

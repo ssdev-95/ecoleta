@@ -1,0 +1,29 @@
+<div
+	class="flex items-center justify-center"
+	[class]="{
+		'min-h-screen': !small,
+		'w-screen': !small,
+		'w-full': small,
+		'min-h-full': small
+	}"
+>
+	<div
+		class="rounded-full overflow-hidden p-1 animate-spin"
+		[class]="{
+		  'h-10': !small,
+			'w-10': !small,
+			'bg-spinner': !small,
+			'h-6': small,
+			'w-6': small,
+			'bg-spinner-alt': small
+		}"
+	>
+		<div
+			class="h-full w-full rounded-full"
+			[class]="{
+				'bg-zinc-200': !small,
+				'bg-green-700': small
+			}"
+		></div>
+	</div>
+</div>

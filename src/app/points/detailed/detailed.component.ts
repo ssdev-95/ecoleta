@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
+import {
+	ActivatedRoute, Router
+} from '@angular/router';
+
 import { Subscription } from 'rxjs';
 
 import { HttpService } from '@providers/http.service';
@@ -35,11 +39,12 @@ type CollectorResponse = Omit<Collector, 'whatsapp'|'number'|'mapUrl'> & {
 export class DetailedComponent {
 	constructor(
 		private route: ActivatedRoute,
+		private router: Router,
 		private httpClient: HttpService
 	) {}
 	paramsSubscription:Subscription|undefined
 	httpSubscription:Subscription|undefined
-
+	loading:boolean = true
   collector:Collector|undefined
 
 	ngOnInit() {
@@ -54,6 +59,14 @@ export class DetailedComponent {
 						this.collector = mapHttpResponse(res)
 					})
 			})
+
+			setTimeout(() => {
+				if(!this.collector) {
+					this.router.navigateByUrl('/')
+				} else {
+					this.loading = false
+				}
+			}, 2500)
 	}
 
 	ngOnDestroy() {

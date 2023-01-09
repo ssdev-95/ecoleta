@@ -25,6 +25,7 @@
     ],
 		"paths": {
 			"@providers/*": ["src/app/providers/*"],
+			"@directives/*": ["src/app/directives/*"],
 			"@assets/*": ["src/assets/*"],
 			"@app/*": ["src/app/*"],
 			"@helpers/*": ["src/helpers/*"],

@@ -21,10 +21,17 @@ export class HomeComponent {
 		private router: Router
 	) {}
 	selectorsSubscription:Subscription|undefined
-
+	loading:boolean = true
 	selectors:Selectors = { uf:[], city:[] }
-	cityControl = new FormControl('')
-	ufControl = new FormControl('')
+
+	cityControl = new FormControl({
+		value: '',
+		disabled: !this.selectors.city.length
+	})
+	ufControl = new FormControl({
+		value: '',
+		disabled: !this.selectors.uf.length
+	})
 
 	handleSubmit(ev: Event) {
 		ev?.preventDefault()
@@ -33,12 +40,35 @@ export class HomeComponent {
 	}
 
 	ngOnInit() {
+		const locationAuthorization = localStorage
+		  .getItem('ecoleta@location-consentiment')
+	  if(!Boolean(Number(locationAuthorization))) {
+			const authorization = window.confirm('Can we use yoyr current location to improve our services?')
+	
+			localStorage.setItem(
+				'ecoleta@location-consentiment',
+				Number(authorization).toString()
+			)
+		}
+  	
 		this.selectorsSubscription = this
-		  .httpClient
+			.httpClient
 			.getCollectorLocationSelectors()
 			.subscribe(res => {
 				this.selectors = res
+				this.cityControl.enable({
+					onlySelf:!!res.city.length,
+					emitEvent:!!res.city.length
+				})
+				this.ufControl.enable({
+					onlySelf:!!res.uf.length,
+					emitEvent:!!res.uf.length
+				})
 			})
+
+  		setTimeout(() => {
+  			this.loading = false
+  		}, 2500)
 	}
 
 	ngOnDestroy() {
