@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormService } from '@providers/form.service';
 
 import {
 	LoaderComponent
@@ -14,7 +15,10 @@ import { TextComponent } from './text/text.component';
 import {
 	DynamicTemplateDirective
 } from '@directives/dynamic-template.directive';
+
 import { InputComponent } from './input/input.component';
+import { FormComponent } from './form/form.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { InputComponent } from './input/input.component';
 		LoaderComponent,
 		HeadingComponent,
 		TextComponent,
-		InputComponent
+		InputComponent,
+		FormComponent,
+		MapComponent
 	],
   imports: [CommonModule],
 	exports: [
@@ -30,7 +36,10 @@ import { InputComponent } from './input/input.component';
 		LoaderComponent,
 		HeadingComponent,
 		TextComponent,
-		InputComponent
-	]
+		InputComponent,
+		FormComponent,
+		MapComponent
+	],
+	providers: [FormService]
 })
 export class ComponentsModule { }

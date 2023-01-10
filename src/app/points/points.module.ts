@@ -8,7 +8,6 @@ import { ComponentsModule } from '@app/components/components.module';
 import { PointsListComponent } from './list/list.component';
 import { NewPointComponent } from './new/new.component';
 import { DetailedComponent } from './detailed/detailed.component';
-import { MapComponent } from './map/map.component';
 
 import { MapService } from '@providers/map.service';
 import { HttpService } from '@providers/http.service';
@@ -18,8 +17,7 @@ import { FormService } from '@providers/form.service';
   declarations: [
 		PointsListComponent,
 		NewPointComponent,
-		DetailedComponent,
-		MapComponent
+		DetailedComponent
 	],
   imports: [
     CommonModule,
@@ -32,6 +30,7 @@ import { FormService } from '@providers/form.service';
 		MapService,
 		HttpService,
 		FormService
-	]
+	],
+	exports: [FormService]
 })
 export class PointsModule { }

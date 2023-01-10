@@ -1,0 +1,145 @@
+<form
+	class="w-full flex flex-col gap-6"
+	[formGroup]="form"
+	(ngSubmit)="onSubmit()"
+>
+  <label class="w-full h-[300px] bg-green-200 rounded-md p-7">
+		<div class="w-full h-full rounded-md border border-[4px] border-green-600 border-dashed grid place-items-center overflow-hidden">
+			<img
+				*ngIf="!form.imagePreview"
+				src="../../../assets/upload.svg"
+				alt="Upload a image file"
+			/>
+
+			<img
+				*ngIf="form.imagePreview"
+				class="h-full"
+				[src]="form.imagePreview"
+			/>
+		</div>
+
+	  <input
+			class="-translate-x-[100vw]"
+			(change)="onImageChange($event)"
+			type="file"
+		/>
+	</label>
+
+	<fieldset class="w-full flex flex-col gap-3">
+		<ec-text *as="'legend'" class="font-semibold text-[1.5rem] mb:text-[1.35rem] mb-5">
+		  Infos
+		</ec-text>
+
+		<ec-input
+			class="w-full"
+			name="name"
+			[invalid]="(form.invalid && form.get('name')?.touched && form.get('name')?.errors?.['required'])"
+		>
+			Entity's name
+		</ec-input>
+
+		<ec-input
+			class="w-full"
+			name="email"
+			[invalid]="(form.invalid && form.get('email')?.touched && form.get('email')?.errors?.['required'])"
+		>
+			Email
+		</ec-input>
+
+		<ec-input
+			class="w-[45%] mb:w-[65%]"
+			name="whatsapp"
+			[invalid]="(form.invalid && form.get('whatsapp')?.touched && form.get('whatsapp')?.errors?.['required'])"
+		>
+			Whatsapp
+		</ec-input>
+	</fieldset>
+
+	<fieldset class="w-full flex flex-col gap-3">
+		<div class="w-full flex items-center justify-between">
+			<ec-text *as="'legend'" class="font-semibold text-[1.5rem] mb:text-[1.35rem]">
+				Address
+			</ec-text>
+
+			<ec-text class="text-[0.875rem]">
+				Select address in the map
+			</ec-text>
+		</div>
+
+		<leaflet-map></leaflet-map>
+
+		<div class="w-full flex gap-3">
+			<ec-input
+				class="w-[30%]"
+				name="number"
+				[invalid]="(form.invalid && form.get('number')?.touched && form.get('number')?.errors?.['required'])"
+			>
+			  Number
+			</ec-input>
+
+			<ec-input
+				class="flex-1"
+				name="city"
+			  [invalid]="(form.invalid && form.get('city')?.touched && form.get('city')?.errors?.['required'])"
+			>
+				City
+			</ec-input>
+		</div>
+
+		<div class="w-full flex gap-3">
+			<ec-input
+				class="w-[30%]"
+				name="street"
+				[invalid]="(form.invalid && form.get('street')?.touched && form.get('street')?.errors?.['required'])"
+			>
+				Street
+			</ec-input>
+	
+			<ec-input
+				class="flex-1"
+				name="state"
+				[invalid]="(form.invalid && form.get('state')?.touched && form.get('state')?.errors?.['required'])"
+			>
+				State
+			</ec-input>
+		</div>
+	</fieldset>
+
+	<div class="w-full flex items-center justify-between mt-5">
+		<ec-text *as="'strong'" class="font-semibold text-[1.5rem] mb:text-[1.35rem]">
+			Collectable items
+		</ec-text>
+
+		<ec-text class="text-[0.875rem]">
+			Select one or more items bellow
+		</ec-text>
+	</div>
+
+	<div class="w-full grid grid-cols-3 gap-2 mt-3 mb-5">
+		<button
+			*ngFor="let categ of categs"
+			type="button"
+			(click)="form.selectCateg(categ.text)"
+			[class]="['flex', 'flex-col', 'md:gap-4', 'py-3', 'md:py-14', 'items-center', 'rounded-lg', form.selectedCategs.includes(categ.text) && 'bg-white', !form.selectedCategs.includes(categ.text) && 'bg-green-200', form.selectedCategs.includes(categ.text) && 'ring-[2px]', form.selectedCategs.includes(categ.text) && 'ring-green-500']"
+		>
+		  <img [src]="categ.src" alt="" />
+
+			<ec-text class="md:text-xl">
+				{{categ.text}}
+			</ec-text>
+		</button>
+	</div>
+
+	<button
+		type="submit"
+		[disabled]="form.invalid || !form.hasCategorySelected().length || isSubmiting"
+		class="bg-green-400 rounded-md md:w-[267.08px] w-full overflow-hidden hover:bg-green-600 mb:text-[0.875rem] text-white text-center font-semibold p-4 ml-auto disabled:bg-green-500 disabled:bg-green-700"
+  >
+		<ec-text *ngIf="!isSubmiting">
+			Register a collector point
+		</ec-text>
+
+		<ec-loader *ngIf="isSubmiting" [small]="true">
+		</ec-loader>
+	</button>
+</form>
