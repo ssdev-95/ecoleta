@@ -16,8 +16,9 @@ import {
 	DynamicTemplateDirective
 } from '@directives/dynamic-template.directive';
 
-import { InputComponent } from './input/input.component';
-import { FormComponent } from './form/form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { InputComponent } from './input/input.component';;
 import { MapComponent } from './map/map.component';
 
 @NgModule({
@@ -27,17 +28,18 @@ import { MapComponent } from './map/map.component';
 		HeadingComponent,
 		TextComponent,
 		InputComponent,
-		FormComponent,
 		MapComponent
 	],
-  imports: [CommonModule],
+  imports: [
+		CommonModule,
+		ReactiveFormsModule
+	],
 	exports: [
 		DynamicTemplateDirective,
 		LoaderComponent,
 		HeadingComponent,
 		TextComponent,
 		InputComponent,
-		FormComponent,
 		MapComponent
 	],
 	providers: [FormService]

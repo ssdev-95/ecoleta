@@ -30,7 +30,6 @@ import { FormService } from '@providers/form.service';
 		MapService,
 		HttpService,
 		FormService
-	],
-	exports: [FormService]
+	]
 })
 export class PointsModule { }

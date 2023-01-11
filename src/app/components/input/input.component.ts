@@ -5,7 +5,7 @@
   templateUrl: './input.component.html'
 })
 export class InputComponent {
-	@Input() class:string = ''
+	@Input() classes:string = ''
 	@Input() name:string = ''
 	@Input() invalid:boolean = false
 }
