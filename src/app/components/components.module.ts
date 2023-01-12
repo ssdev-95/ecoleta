@@ -11,18 +11,22 @@ import {
 	HeadingComponent
 } from './heading/heading.component';
 
-import { TextComponent } from './text/text.component';
-
 import {
 	DynamicTemplateDirective
 } from '@directives/dynamic-template.directive';
 
+import {
+	CategoryButtonComponent
+} from './category-button/category-button.component';
+
 import { InputComponent } from './input/input.component';
 import { MapComponent } from './map/map.component';
+import { TextComponent } from './text/text.component';
 
 @NgModule({
   declarations: [
 		DynamicTemplateDirective,
+		CategoryButtonComponent,
 		LoaderComponent,
 		HeadingComponent,
 		TextComponent,
@@ -35,6 +39,7 @@ import { MapComponent } from './map/map.component';
 	],
 	exports: [
 		DynamicTemplateDirective,
+		CategoryButtonComponent,
 		LoaderComponent,
 		HeadingComponent,
 		TextComponent,

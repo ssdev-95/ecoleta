@@ -29,16 +29,15 @@
 
 		<leaflet-map></leaflet-map>
 
-		<div class="w-full flex flex-wrap gap-2 justify-center">
-		  <button
+		<div class="w-[736px] max-w-[90vw] grid grid-cols-3 gap-2 md:gap-5 mt-3 mb-5 bg-red-200/40">
+			<ec-category
+				class="h-28 md:h-[12rem] flex items-center justify-center"
 				*ngFor="let categ of categs"
-				(click)="selectCateg(categ.text)"
-				[class]="['flex-none', 'py-4', 'px-[26px]', 'rounded-lg', selectedCategs.includes(categ.text) && 'bg-white', !selectedCategs.includes(categ.text) && 'bg-green-200', selectedCategs.includes(categ.text) && 'ring-[2px]', selectedCategs.includes(categ.text) && 'ring-green-500']"
-			>
-				<img [src]="categ.src" alt="" />
-				<ec-text>{{categ.text}}</ec-text>
-			</button>
-		</div>
+				[category]="categ"
+				[active]="selectedCategs.includes(categ.text)"
+				(toggle)="selectCateg($event)"
+			></ec-category>
+	  </div>
 	</main>
 </div>
 </ng-template>

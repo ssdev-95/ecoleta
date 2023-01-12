@@ -1,0 +1,17 @@
+<button
+	type="button"
+	(click)="handleClick()"
+	class="flex flex-col md:gap-4 justify-center items-center rounded-lg w-full h-full"
+	[class]="{
+	  'bg-white': active,
+		'bg-green-200': !active,
+		'ring-[2px]' :active,
+	  'ring-green-500': active
+	}"
+>
+  <img [src]="category.src" alt="" />
+
+	<ec-text class="md:text-xl">
+		{{category.text}}
+	</ec-text>
+</button>

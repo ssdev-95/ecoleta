@@ -139,24 +139,19 @@
 					Collectable items
 				</ec-text>
 				
-				<ec-text class="text-[0.875rem]">
+:				<ec-text class="text-[0.875rem]">
 					Select one or more items bellow
 				</ec-text>
 			</div>
 
-			<div class="w-full grid grid-cols-3 gap-2 mt-3 mb-5">
-				<button
+			<div class="w-full grid grid-cols-3 gap-2 md:gap-5 mt-3 mb-5 md:px-7">
+				<ec-category
+					class="h-28 md:h-[12rem] flex items-center justify-center"
 					*ngFor="let categ of categs"
-					type="button"
-					(click)="form.selectCateg(categ.text)"
-					[class]="['flex', 'flex-col', 'md:gap-4', 'py-3', 'md:py-14', 'items-center', 'rounded-lg', form.selectedCategs.includes(categ.text) && 'bg-white', !form.selectedCategs.includes(categ.text) && 'bg-green-200', form.selectedCategs.includes(categ.text) && 'ring-[2px]', form.selectedCategs.includes(categ.text) && 'ring-green-500']"
-				>
-				  <img [src]="categ.src" alt="" />
-					
-					<ec-text class="md:text-xl">
-						{{categ.text}}
-					</ec-text>
-				</button>
+					[category]="categ"
+					[active]="form.selectedCategs.includes(categ.text)"
+					(toggle)="form.selectCateg($event)"
+				></ec-category>
 			</div>
 
 			<button
