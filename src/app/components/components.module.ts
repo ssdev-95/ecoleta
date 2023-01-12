@@ -22,11 +22,13 @@ import {
 import { InputComponent } from './input/input.component';
 import { MapComponent } from './map/map.component';
 import { TextComponent } from './text/text.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
 		DynamicTemplateDirective,
 		CategoryButtonComponent,
+		HeaderComponent,
 		LoaderComponent,
 		HeadingComponent,
 		TextComponent,
@@ -40,6 +42,7 @@ import { TextComponent } from './text/text.component';
 	exports: [
 		DynamicTemplateDirective,
 		CategoryButtonComponent,
+		HeaderComponent,
 		LoaderComponent,
 		HeadingComponent,
 		TextComponent,

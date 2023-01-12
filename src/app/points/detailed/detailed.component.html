@@ -5,7 +5,7 @@
 	*ngIf="!!collector && !loading"
 	class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem]"
 >
-	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">
+	<ec-header [showLogo]="false" class="w-full pt-[1rem] pb-[2rem]">
 		<a
 			[routerLink]="['/points']"
 			[queryParams]="{city:collector.city,uf:collector.uf}"
@@ -13,7 +13,7 @@
 		>
 			<img src="../../../assets/go-back.svg" alt=""/>
 		</a>
-	</header>
+	</ec-header>
 
 	<main class="w-full max-w-[1440px] flex-1 flex mb:flex-col gap-7">
 		<img

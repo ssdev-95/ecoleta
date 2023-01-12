@@ -4,7 +4,7 @@
 <div
 	class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem] pb-6"
 >
-	<header class="w-full max-w-[1120px] flex items-center justify-start pt-[1rem] pb-[2rem]">
+	<ec-header [showLogo]="false" class="w-full pt-[1rem] pb-[2rem]">
 		<a
 			class="flex-none"
 			[routerLink]="['/']"
@@ -14,7 +14,7 @@
   			alt="Green arrow vector"
   		/>
 		</a>
-	</header>
+	</ec-header>
 
 	<main class="flex-1 max-w-[1120px] flex flex-col gap-8">
 		<div class="grid grid-cols-1 text-zinc-800 gap-2">
