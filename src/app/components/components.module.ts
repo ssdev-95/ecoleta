@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormService } from '@providers/form.service';
 
 import {
@@ -16,9 +17,7 @@ import {
 	DynamicTemplateDirective
 } from '@directives/dynamic-template.directive';
 
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { InputComponent } from './input/input.component';;
+import { InputComponent } from './input/input.component';
 import { MapComponent } from './map/map.component';
 
 @NgModule({
