@@ -1,0 +1,12 @@
+<label class="flex flex-col">
+  <ec-text class="text-[0.875rem]">
+		<ng-content></ng-content>
+	</ec-text>
+
+	<input
+		class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
+		[formControlName]="name"
+		[class]="[invalid && 'bg-red-500/40']"
+		[attr.inputmode]="name === 'whatsapp' && 'numeric'"
+	/>
+</label>

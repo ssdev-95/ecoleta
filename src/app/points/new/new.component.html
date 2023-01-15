@@ -1,11 +1,5 @@
 <div class="min-h-screen w-screen flex flex-col items-center justify-start px-[1.25rem] pb-6">
-	<header class="w-full max-w-[1120px] flex items-center justify-between pt-4 pb-[2rem]">
-		<img
-			src="../../../assets/logo.svg"
-			class="h-6"
-			alt="Ecoleta"
-		/>
-
+	<ec-header class="w-full pt-3 pb-5">
 		<a
 			class="flex-none flex gap-1"
 			[routerLink]="['/']"
@@ -14,174 +8,155 @@
 				src="../../../assets/go-back.svg"
 				alt="Green arrow vector"
 			/>
-
+	
 			<strong class="text-sm text-blue-900">
 				Back to home
 			</strong>
 		</a>
-	</header>
+	</ec-header>
 
 	<main class="bg-white rounded-md flex-1 p-4 md:p-10 w-full max-w-[736px] flex flex-col gap-6">
 		<h1 class="font-semibold text-[2.25rem] mb:text-[1.85rem]">
 			Collect point <br />
 			registration
 		</h1>
-	
+
 		<form
 			class="w-full flex flex-col gap-6"
 			[formGroup]="form"
 			(ngSubmit)="handleSubmit()"
 		>
-			<label class="w-full h-[300px] bg-green-200 rounded-md p-7">
+		  <label class="w-full max-w-[340px] h-[300px] bg-green-200 rounded-md p-7 mx-auto">
 				<div class="w-full h-full rounded-md border border-[4px] border-green-600 border-dashed grid place-items-center overflow-hidden">
 					<img
-						*ngIf="!form.imagePreview"
-						src="../../../assets/upload.svg"
-						alt="Upload a image file"
-					/>
+   					*ngIf="!form.imagePreview"
+  					src="../../../assets/upload.svg"
+  					alt="Upload a image file"
+  				/>
 
-					<img
-						*ngIf="form.imagePreview"
-						class="h-full"
-						[src]="form.imagePreview"
-					/>
-				</div>
+  				<img
+  					*ngIf="form.imagePreview"
+  					class="h-full"
+	  				[src]="form.imagePreview"
+		  		/>
+			  </div>
 
-				<input
-					class="-translate-x-[100vw]"
-					(change)="form.onImageChange($event)"
-					type="file"
+  			<input
+	  			class="-translate-x-[100vw]"
+		  	  (change)="form.onImageChange($event)"
+			  	type="file"
 				/>
 			</label>
 
 			<fieldset class="w-full flex flex-col gap-3">
-				<legend class="font-semibold text-[1.5rem] mb:text-[1.35rem] mb-5">
+				<ec-text *as="'legend'" class="font-semibold text-[1.5rem] mb:text-[1.35rem] mb-5">
 					Infos
-				</legend>
+				</ec-text>
 
-				<label class="w-full flex flex-col relative">
-					<span class="text-[0.875rem]">Entity's name</span>
-					<input
-						class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
-						[class]="[(form.invalid && form.get('name')?.touched && form.get('name')?.errors?.['required']) && 'bg-red-500/40']"
-					  formControlName="name"
-					/>
-				</label>
+				<ec-input
+					class="w-full"
+					name="name"
+					[invalid]="(form.invalid && form.get('name')?.touched && form.get('name')?.errors?.['required'])"
+				>
+  				Entity's name
+				</ec-input>
 
-				<label class="w-full flex flex-col">
-					<span class="text-[0.875rem]">Email</span>
-					<input
-						class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
-						[class]="[(form.invalid && form.get('email')?.touched && form.get('email')?.errors?.['required']) && 'bg-red-500/40']"
-						formControlName="email"
-					/>
-				</label>
+				<ec-input
+					class="w-full"
+					name="email"
+					[invalid]="(form.invalid && form.get('email')?.touched && form.get('email')?.errors?.['required'])"
+				>
+				  Email
+				</ec-input>
 
-				<label class="w-[45%] mb:w-[65%] flex flex-col">
-					<span class="text-[0.875rem]">Whatsapp</span>
-					<input
-						class="bg-zinc-200 w-full mr-auto rounded-md px-4 py-3 text-[1rem]"
-						[class]="[(form.invalid && form.get('whatsapp')?.touched && form.get('whatsapp')?.errors?.['required']) && 'bg-red-500/40']"
-						formControlName="whatsapp"
-						inputmode="numeric"
-					/>
-				</label>
+				<ec-input
+					class="w-[45%] mb:w-[65%]"
+					name="whatsapp"
+					[invalid]="(form.invalid && form.get('whatsapp')?.touched && form.get('whatsapp')?.errors?.['required'])"
+				>
+				  Whatsapp
+			  </ec-input>
 			</fieldset>
 
 			<fieldset class="w-full flex flex-col gap-3">
 				<div class="w-full flex items-center justify-between">
-					<legend class="font-semibold text-[1.5rem] mb:text-[1.35rem]">
+					<ec-text *as="'legend'" class="font-semibold text-[1.5rem] mb:text-[1.35rem]">
 						Address
-					</legend>
+					</ec-text>
 
-					<span class="text-[0.875rem]">
+					<ec-text class="text-[0.875rem]">
 						Select address in the map
-					</span>
+					</ec-text>
 				</div>
 
 				<leaflet-map></leaflet-map>
-				
-				<div class="w-full flex gap-3">
-					<label class="w-[30%] flex flex-col">
-						<span class="text-[0.875rem]">Number</span>
-						<input
-							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
-							formControlName="number"
-							[class]="[(form.invalid && form.get('number')?.touched && form.get('number')?.errors?.['required']) && 'bg-red-500/40']"
-						/>
-					</label>
 
-					<label class="flex-1 flex flex-col">
-						<span class="text-[0.875rem]">City</span>
-						<input
-							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
-							formControlName="city"
-							[class]="[(form.invalid && form.get('city')?.touched && form.get('city')?.errors?.['required']) && 'bg-red-500/40']"
-						/>
-					</label>
+				<div class="w-full flex gap-3">
+					<ec-input
+						class="w-[35%]"
+						name="number"
+						[invalid]="(form.invalid && form.get('number')?.touched && form.get('number')?.errors?.['required'])"
+					>
+					  Number
+				  </ec-input>
+
+					<ec-input
+						class="flex-1"
+						name="city"
+						[invalid]="(form.invalid && form.get('city')?.touched && form.get('city')?.errors?.['required'])"
+					>
+					  City
+					</ec-input>
 				</div>
 
 				<div class="w-full flex gap-3">
-					<label class="w-[30%] flex flex-col">
-						<span class="text-[0.875rem]">Street</span>
-						<input
-							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
-							formControlName="street"
-							[class]="[(form.invalid && form.get('street')?.touched && form.get('street')?.errors?.['required']) && 'bg-red-500/40']"
-						/>
-					</label>
-	
-   				<label class="flex-1 flex flex-col">
-  					<span class="text-[0.875rem]">State</span>
-						<input
-							class="bg-zinc-200 w-full rounded-md px-4 py-3 text-[1rem]"
-							formControlName="state"
-							[class]="[(form.invalid && form.get('state')?.touched && form.get('state')?.errors?.['required']) && 'bg-red-500/40']"
-						/>
-   				</label>
+	  			<ec-input
+						class="w-[35%]"
+						name="street"
+						[invalid]="(form.invalid && form.get('street')?.touched && form.get('street')?.errors?.['required'])"
+					>
+					  Street
+					</ec-input>
+
+					<ec-input
+  					class="flex-1"
+						name="state"
+						[invalid]="(form.invalid && form.get('state')?.touched && form.get('state')?.errors?.['required'])"
+					>
+					  State
+				  </ec-input>
 				</div>
 			</fieldset>
 
 			<div class="w-full flex items-center justify-between mt-5">
-				<strong class="font-semibold text-[1.5rem] mb:text-[1.35rem]">
+				<ec-text *as="'strong'" class="font-semibold text-[1.5rem] mb:text-[1.35rem]">
 					Collectable items
-				</strong>
-
-				<span class="text-[0.875rem]">
+				</ec-text>
+				
+:				<ec-text class="text-[0.875rem]">
 					Select one or more items bellow
-				</span>
+				</ec-text>
 			</div>
-			<div class="w-full grid grid-cols-3 gap-2 mt-3 mb-5">
-				<button
+
+			<div class="w-full grid grid-cols-3 gap-2 md:gap-5 mt-3 mb-5 md:px-7">
+				<ec-category
+					class="h-28 md:h-[12rem] flex items-center justify-center"
 					*ngFor="let categ of categs"
-					type="button"
-					(click)="form.selectCateg(categ.text)"
-					[class]="['flex', 'flex-col', 'md:gap-4', 'py-3', 'md:py-14', 'items-center', 'rounded-lg', form.selectedCategs.includes(categ.text) && 'bg-white', !form.selectedCategs.includes(categ.text) && 'bg-green-200', form.selectedCategs.includes(categ.text) && 'ring-[2px]', form.selectedCategs.includes(categ.text) && 'ring-green-500']"
-				>
-				  <img [src]="categ.src" alt="" />
-					<span class="md:text-xl">
-						{{categ.text}}
-					</span>
-			  </button>
+					[category]="categ"
+					[active]="form.selectedCategs.includes(categ.text)"
+					(toggle)="form.selectCateg($event)"
+				></ec-category>
 			</div>
 
 			<button
-				type="submit"
+			  type="submit"
 				[disabled]="form.invalid || !form.hasCategorySelected().length || isSubmiting"
 				class="bg-green-400 rounded-md md:w-[267.08px] w-full overflow-hidden hover:bg-green-600 mb:text-[0.875rem] text-white text-center font-semibold p-4 ml-auto disabled:bg-green-500 disabled:bg-green-700"
 			>
-			  <span *ngIf="!isSubmiting">
+			  <ec-text *ngIf="!isSubmiting">
 					Register a collector point
-				</span>
+				</ec-text>
 
-				<!--div
-					*ngIf="isSubmiting"
-					class="w-full min-h-full flex items-center justify-center"
-				>
-				  <div class="h-6 w-6 rounded-full overflow-hidden bg-spinner-alt p-1 animate-spin">
-						<div class="h-full w-full rounded-full bg-green-700"></div>
-					</div>
-				</div-->
 				<ec-loader *ngIf="isSubmiting" [small]="true">
 				</ec-loader>
 			</button>

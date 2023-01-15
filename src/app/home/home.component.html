@@ -2,23 +2,25 @@
 
 <ng-template #content>
 <div
-	class="flex flex-col min-h-screen w-screen md:bg-people md:bg-right md:bg-contain md:bg-no-repeat"
+	class="flex flex-col min-h-screen w-screen"
 >
-	<header class="flex items-center justify-start p-4">
-		<img src="../../assets/logo.svg" alt="Ecoleta" />
-	</header>
+	<ec-header class="p-4"></ec-header>
 
-	<main class="mx-auto w-full max-w-[1104px] flex-1 flex flex-col justify-center mb:items-center items-start gap-6 p-10">
-		<h1 class="text-[3.325rem] mb:text-[1.9rem] font-bold font-butu mb:text-center">
+	<main class="mx-auto w-full max-w-[1104px] flex-1 flex p-10">
+		<div class="flex-1 flex flex-col gap-6 items-start mb:items-center justify-center md:justify-start">
+		<ec-heading class="text-[3.325rem] mb:text-[1.9rem] font-bold font-butu mb:text-center text-blue-900">
 			Your residuals collector marketplace
-		</h1>
+		</ec-heading>
 	
-		<p class="text-[1.5rem] mb:text-[0.9365rem] text-zinc-400 mb:text-center">
-		  We help people efficiently find residuals collector points.
-		</p>
+		<ec-text
+			*as="'p'"
+			class="text-[1.5rem] mb:text-[0.9365rem] text-zinc-400 mb:text-center"
+		>
+			We help people efficiently find residuals collector points.
+		</ec-text>
 
 		<form
-			class="flex flex-col gap-3"
+			class="max-w-fit flex flex-col gap-3"
 			(submit)="handleSubmit($event)"
 		>
 		  <label
@@ -80,9 +82,9 @@
 		  		/>
 				</div>
 				<div class="p-4 flex-1">
-  				<span class="mb:text-[0.875rem] text-white text-center font-semibold">
+  				<ec-text class="mb:text-[0.875rem] text-white text-center font-semibold">
   					Enter
-  				</span>
+  				</ec-text>
 				</div>
 			</button>
 
@@ -98,12 +100,21 @@
   			</div>
 	
   			<div class="p-4">
-  				<span class="mb:text-[0.875rem] text-white text-center font-semibold">
+  				<ec-text class="mb:text-[0.875rem] text-white text-center font-semibold">
   					Register a collector point
-  				</span>
+  				</ec-text>
   			</div>
   		</a>
 		</form>
+		</div>
+
+		<div class="flex-1 mb:hidden">
+			<img
+				class="w-[600px] max-w-[60vw]"
+				src="../../assets/people.svg"
+				alt="Two human beings manipulating trash."
+			/>
+		</div>
 	</main>
 </div>
 </ng-template>
