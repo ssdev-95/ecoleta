@@ -14,6 +14,9 @@
 - [x] User can save new collector points based in current user location and/or matching a given point in the map.
 - [x] User can see detailed information about a matching collector point.
 
+## Roadmap
+- [ ] Implementation of automated unit tests.
+
 ## Techs 'n tools used
 
 ### WEB  (current)
