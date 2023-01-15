@@ -1,27 +1,40 @@
-# Ecoleta
+# Ecoleta - Collect Residuals Made Easy
+<br />
+<br />
+<p align="center">
+<img src="https://raw.githubusercontent.com/xSallus/ecoleta/main/src/assets/logo.svg" />
+</p>
+<br />
+<br />
+<hr />
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+## Use cases
 
-## Development server
+- [x] User can see collector points on a map based on a matching city.
+- [x] User can save new collector points based in current user location and/or matching a given point in the map.
+- [x] User can see detailed information about a matching collector point.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Techs 'n tools used
 
-## Code scaffolding
+### WEB  (current)
+- Angular
+- Typescript
+- Tailwid CSS
+- Leaflet
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### API  ([details](https://github.com/xSallus/ecoleta-api))
+- NestJS
+- Typescript
+- TypeORM
+- SQLite
 
-## Build
+## How to run locally
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Clone this repo
+* Setup environment variables according to examples provided in environment folder/.env.example file.
+*  Install necessary dependecies by entering project folder and running ` yarn `
+* Run ` yarn dev `(web) or ` yarn start:dev `(api).
+> On web app open the app using the port that appears on the terminal.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> Made with ♥ using Termux and Neovim.
+> xSallus 2022-2023
